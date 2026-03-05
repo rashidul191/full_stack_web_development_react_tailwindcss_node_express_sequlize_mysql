@@ -3,13 +3,12 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import LabeledInput from "../Components/LabeledInput";
 import SubmitBtn from "../Components/SubmitBtn";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import ApplicationLogo from "../Components/ApplicationLogo";
 import { URL } from "../../config/app";
 import toast from "../../utility/toast";
 
 const LoginUser = () => {
-  const navigate = useNavigate();
   const {
     register,
     formState: { errors },
@@ -24,9 +23,10 @@ const LoginUser = () => {
         localStorage.setItem("access-token", token);
         toast.success(res.data.message);
         // navigate("/"); // home
-        navigate("/user/dashboard"); // home
+        <Navigate to="/user/dashboard"></Navigate>;
       }
     } catch (error) {
+      console.log(error);
       toast.error(error.response?.data?.message);
     }
   };

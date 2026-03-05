@@ -3,7 +3,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import LabeledInput from "../Components/LabeledInput";
 import SubmitBtn from "../Components/SubmitBtn";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import ApplicationLogo from "../Components/ApplicationLogo";
 import { URL } from "../../config/app";
 
@@ -15,13 +15,12 @@ const LoginAdmin = () => {
   } = useForm();
   const onSubmit = (data) => {
     const storeData = {
-      image: "image here...",
       title: data.title,
       content: data.content,
     };
     axios.post(`${URL}/admin/login`, storeData).then((res) => {
       if (res.data.statusCode === 200) {
-        navigator("/");
+        <Navigate to="/admin/dashboard"></Navigate>;
       } else {
         alert(res.data.message);
       }

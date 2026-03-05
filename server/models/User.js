@@ -69,6 +69,11 @@ module.exports = (sequelize, DataTypes) => {
           isIn: [Object.values(Roles)],
         },
       },
+
+      referrer_id: {
+        type: DataTypes.TINYINT,
+        allowNull: false,
+      },
     },
 
     {

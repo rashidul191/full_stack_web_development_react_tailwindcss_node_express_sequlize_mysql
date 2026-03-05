@@ -24,22 +24,21 @@ module.exports.login = async (req, res) => {
     // 1️⃣ Find user by username
     const auth = await User.findOne({ where: { email } });
 
-    // console.log(auth);
-
     if (!auth) {
       return sendError(res, "Invalid email or password");
     }
 
     // 2️⃣ Compare password
     const isMatch = await bcrypt.compare(password, auth.password);
+
     if (!isMatch) {
       return sendError(res, "Invalid email or password");
     }
 
     const token = generateToken(auth);
-
+    console.log(token);
     // 4️⃣ Send success response
-    sendSuccess(res, "Login successful",  token );
+    sendSuccess(res, "Login successful", token);
   } catch (error) {
     sendError(res, "Can't find data in the database!!", error);
   }
