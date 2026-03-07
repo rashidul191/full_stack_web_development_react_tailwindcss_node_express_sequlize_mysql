@@ -5,6 +5,7 @@ import { getRoleName } from "../../../utility/roles";
 
 export default function Navbar(props) {
   const { auth, logoutUser } = props.userInfo;
+  const user = auth?.auth;
   return (
     <nav className="navbar w-full bg-base-300 px-3">
       {/* Sidebar toggle */}
@@ -36,14 +37,14 @@ export default function Navbar(props) {
           >
             <div className="avatar">
               <div className="w-10 rounded-full">
-                <img src={auth?.auth?.avatar ?? defaultAvatar} alt="profile" />
+                <img src={user?.avatar ?? defaultAvatar} alt="profile" />
               </div>
             </div>
 
             <div className="hidden md:block text-left">
-              <p className="font-semibold leading-none">{auth?.auth?.name}</p>
+              <p className="font-semibold leading-none">{user?.name}</p>
               <span className="text-xs opacity-70">
-                {getRoleName(auth?.auth?.role)}
+                {getRoleName(user?.role)}
               </span>
             </div>
           </div>
@@ -53,14 +54,16 @@ export default function Navbar(props) {
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 w-52 rounded-box bg-base-100 shadow"
           >
+            {/* <li>
+              <span>{user?.username}</span>
+            </li> */}
+            {/* <li>
+              <span>{user?.email}</span>
+            </li> */}
             <li>
-              <a>My Account</a>
-            </li>
-            <li>
-              <a>Settings</a>
-            </li>
-            <li>
-              <button onClick={logoutUser}>Logout</button>
+              <button className="bg-red-500 text-white" onClick={logoutUser}>
+                Logout
+              </button>
             </li>
           </ul>
         </div>

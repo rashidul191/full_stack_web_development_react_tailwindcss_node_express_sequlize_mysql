@@ -13,6 +13,7 @@ import RegistrationUser from "./view/Auth/RegistrationUser";
 import LoginAdmin from "./view/Auth/LoginAdmin";
 import PrivateRoute from "./routes/PrivateRoute";
 import { ROLES } from "./utility/roles";
+import GeneralSetting from "./view/Admin/Setting/GeneralSetting";
 
 function App() {
   return (
@@ -57,6 +58,11 @@ function App() {
       >
         <Route path="dashboard" element={<h1>Admin Dashboard</h1>} />
         <Route path="users" element={<h1>Manage Users</h1>} />
+        <Route path="setting">
+          <Route path="general" element={<GeneralSetting />} />
+          <Route path="social-links" element={<GeneralSetting />} />
+          <Route path="profile" element={<GeneralSetting />} />
+        </Route>
       </Route>
 
       {/* Not Found */}
