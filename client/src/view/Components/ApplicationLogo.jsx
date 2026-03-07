@@ -5,7 +5,7 @@ const ApplicationLogo = (props) => {
   const { className = "" } = props;
   return (
     <>
-      <div className="flex justify-center items-center">
+      <div className="w-full flex justify-center items-center">
         <img
           className={`w-auto p-4 ${className}`}
           src={logo}

@@ -25,14 +25,24 @@ module.exports.login = async (req, res) => {
     const auth = await User.findOne({ where: { email } });
 
     if (!auth) {
-      return sendError(res, "Invalid email or password");
+      return sendError(
+        res,
+        "Authorization failed!",
+        (error = { message: "Invalid email or password" }),
+        (statusCode = 401),
+      );
     }
 
     // 2️⃣ Compare password
     const isMatch = await bcrypt.compare(password, auth.password);
 
     if (!isMatch) {
-      return sendError(res, "Invalid email or password");
+      return sendError(
+        res,
+        "Authorization failed!",
+        (error = { message: "Invalid email or password" }),
+        (statusCode = 401),
+      );
     }
     const token = generateToken(auth);
     // 4️⃣ Send success response

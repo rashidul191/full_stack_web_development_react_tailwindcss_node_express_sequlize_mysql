@@ -12,6 +12,7 @@ import LoginUser from "./view/Auth/LoginUser";
 import RegistrationUser from "./view/Auth/RegistrationUser";
 import LoginAdmin from "./view/Auth/LoginAdmin";
 import PrivateRoute from "./routes/PrivateRoute";
+import { ROLES } from "./utility/roles";
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
       <Route
         path="/user"
         element={
-          <PrivateRoute role="1">
+          <PrivateRoute role={ROLES.USER}>
             <UserLayout />
           </PrivateRoute>
         }
@@ -49,7 +50,7 @@ function App() {
       <Route
         path="/admin"
         element={
-          <PrivateRoute role="0">
+          <PrivateRoute role={ROLES.ADMIN}>
             <AdminLayout />
           </PrivateRoute>
         }

@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "Full Stack MERN App By Rashidul Islam",
+  "description": "MERN Stack App Development By Rashidul Islam",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",

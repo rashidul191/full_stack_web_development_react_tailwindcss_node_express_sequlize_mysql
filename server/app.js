@@ -11,22 +11,21 @@ app.use(cors());
 // file path
 app.use("/uploads", express.static("public/uploads"));
 
-// User Auth Routes
-const loginRoutes = require("./routes/auth/login.route");
-app.use("/api/login", loginRoutes);
-const registerRoutes = require("./routes/auth/register.route");
-app.use("/api/register", registerRoutes);
-
 // Web Routes
 const blogRoutes = require("./routes/web/blog.route");
 // posting to database
 // app.use("/api/blogs", blogRoutes);
 app.use("/api/blogs", blogRoutes);
 
+// User Auth Routes
+const loginRoutes = require("./routes/auth/login.route");
+app.use("/api/login", loginRoutes);
+const registerRoutes = require("./routes/auth/register.route");
+app.use("/api/register", registerRoutes);
+
 // Admin Routes
 const adminLoginRoutes = require("./routes/admin/auth/login.route");
 app.use("/api/admin/login", adminLoginRoutes);
-
 const adminRegisterRoutes = require("./routes/admin/auth/register.route");
 app.use("/api/admin/register", adminRegisterRoutes);
 

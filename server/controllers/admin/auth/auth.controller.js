@@ -19,49 +19,36 @@ const { generateToken } = require("../../../utility/jwt-token.js");
 
 module.exports.login = async (req, res) => {
   try {
-    const { username, password } = req.body;
+    // console.log(req.body);
+    const { email, password } = req.body;
     // 1️⃣ Find user by username
-    const user = await Admin.findOne({ where: { username } });
-
-    if (!user) {
+    const auth = await Admin.findOne({ where: { email } });
+    // console.log(auth)
+    if (!auth) {
       return sendError(
         res,
         "Authorization failed!",
-        (error = { message: "Invalid username or password" }),
+        (error = { message: "Invalid email or password" }),
         (statusCode = 401),
       );
     }
 
     // 2️⃣ Compare password
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await bcrypt.compare(password, auth.password);
+    // console.log(isMatch);
     if (!isMatch) {
       return sendError(
         res,
         "Authorization failed!",
-        (error = { message: "Invalid username or password" }),
+        (error = { message: "Invalid email or password" }),
         (statusCode = 401),
       );
     }
 
-    // console.log(process.env.JWT_SECRET_KEY);
-
-    // Generate JWT Token
-    // const token = jwt.sign(
-    //   { id: user.id, email: user.email },
-    //   process.env.JWT_SECRET_KEY,
-    //   {
-    //     expiresIn: "2d", // 2day
-    //   },
-    // );
-
-    // res.cookie("access-token", token, {
-    //   httpOnly: true,
-    // });
-
-    const token = generateToken(user);
+    const token = generateToken(auth);
 
     // 4️⃣ Send success response
-    sendSuccess(res, "Admin Login successful",  token );
+    sendSuccess(res, "Admin Login successful", { auth: auth, token: token });
   } catch (error) {
     sendError(res, "Can't find data in the database!!", error);
   }
@@ -78,18 +65,18 @@ module.exports.register = async (req, res, next) => {
     }
 
     // 2️⃣ Check if user already exists (username or email)
-    const existingUser = await Admin.findOne({
+    const existingAuth = await Admin.findOne({
       where: {
         email: email,
       },
     });
 
-    if (existingUser) {
+    if (existingAuth) {
       return sendError(res, "Email already exists");
     }
 
     // 3️⃣  Create user
-    const newUserData = {
+    const newAuthData = {
       username,
       name,
       phone,
@@ -98,8 +85,13 @@ module.exports.register = async (req, res, next) => {
       role: role ?? Roles.ADMIN,
     };
 
-    const data = await createService(User, newUserData);
-    sendSuccess(res, "Successfully create account!!", data);
+    const authCreated = await createService(Admin, newAuthData);
+    const token = generateToken(authCreated);
+    // console.log(userResponse, newUserData);
+    sendSuccess(res, "Successfully create account!!", {
+      auth: authCreated,
+      token: token,
+    });
   } catch (error) {
     next();
     sendError(res, "Can't create data!!", error);
