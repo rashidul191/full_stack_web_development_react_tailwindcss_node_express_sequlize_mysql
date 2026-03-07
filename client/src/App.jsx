@@ -11,7 +11,6 @@ import BlogDetails from "./view/FrontEnd/Pages/BlogDetails";
 import LoginUser from "./view/Auth/LoginUser";
 import RegistrationUser from "./view/Auth/RegistrationUser";
 import LoginAdmin from "./view/Auth/LoginAdmin";
-import RequireAuth from "./AuthProvider/RequireAuth";
 
 function App() {
   return (
@@ -32,9 +31,9 @@ function App() {
       <Route
         path="/user"
         element={
-          <RequireAuth>
+         
             <UserLayout />
-          </RequireAuth>
+        
         }
       >
         <Route path="dashboard" element={<h1>User Dashboard</h1>} />
