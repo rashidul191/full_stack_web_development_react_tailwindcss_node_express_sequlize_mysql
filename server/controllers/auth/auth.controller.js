@@ -38,7 +38,7 @@ module.exports.login = async (req, res) => {
     const token = generateToken(auth);
     console.log(token);
     // 4️⃣ Send success response
-    sendSuccess(res, "Login successful", token);
+    sendSuccess(res, "Login successful", { auth: auth, token: token });
   } catch (error) {
     sendError(res, "Can't find data in the database!!", error);
   }
@@ -46,8 +46,6 @@ module.exports.login = async (req, res) => {
 
 module.exports.register = async (req, res, next) => {
   try {
-    console.log(req.file);
-
     const { username, name, phone, email, password, role } = req.body;
 
     // 1️⃣ Basic validation
@@ -56,18 +54,18 @@ module.exports.register = async (req, res, next) => {
     }
 
     // 2️⃣ Check if user already exists (username or email)
-    const existingUser = await User.findOne({
+    const existingAuth = await User.findOne({
       where: {
         email: email,
       },
     });
 
-    if (existingUser) {
-      return sendError(res, "Email already exists");
+    if (existingAuth) {
+      return sendError(res, "User already exists");
     }
 
     // 3️⃣  Create user
-    const newUserData = {
+    const newAuthData = {
       username,
       name,
       phone,
@@ -78,9 +76,13 @@ module.exports.register = async (req, res, next) => {
       avatar: req.file ? imageHandler.store(req.file) : null,
     };
 
-    const data = await createService(User, newUserData);
+    const authCreated = await createService(User, newAuthData);
+    const token = generateToken(authCreated);
     // console.log(userResponse, newUserData);
-    sendSuccess(res, "Successfully create account!!", data);
+    sendSuccess(res, "Successfully create account!!", {
+      auth: authCreated,
+      token: token,
+    });
   } catch (error) {
     next();
     sendError(res, "Can't create data!!", error);

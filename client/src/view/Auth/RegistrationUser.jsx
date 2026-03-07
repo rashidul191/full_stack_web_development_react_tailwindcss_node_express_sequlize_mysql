@@ -1,21 +1,23 @@
-import axios from "axios";
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import LabeledInput from "../Components/LabeledInput";
 import SubmitBtn from "../Components/SubmitBtn";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ApplicationLogo from "../Components/ApplicationLogo";
-import { URL } from "../../config/app";
+import { AuthContext } from "../../context/AuthContext";
+import toast from "../../utility/toast";
+import api from "../../api/axios";
 
 const RegistrationUser = () => {
+  const navigator = useNavigate();
+  const { registerUser } = useContext(AuthContext);
   const {
     register,
     formState: { errors },
     watch,
     handleSubmit,
   } = useForm();
-  const onSubmit = (data) => {
-
+  const onSubmit = async (data) => {
     const storeData = {
       username: data.username,
       name: data.name,
@@ -24,13 +26,21 @@ const RegistrationUser = () => {
       password: data.password,
     };
 
-    axios.post(`${URL}/register`, storeData).then((res) => {
-      if (res.data.statusCode === 200) {
-        navigator("/");
-      } else {
-        alert(res.data.message);
-      }
-    });
+    try {
+      await api.post(`/register`, storeData).then((res) => {
+        // console.log(res?.data?.status === "success");
+        if (res?.data?.status === "success") {
+          registerUser(res?.data?.data);
+          // navigator("/");
+          toast.success(res.data.message);
+
+          navigator("/user/dashboard");
+        }
+      });
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response?.data?.message);
+    }
   };
   return (
     <>
@@ -78,7 +88,7 @@ const RegistrationUser = () => {
                 required={true}
                 register={register}
                 errors={errors}
-                 watch={watch}
+                watch={watch}
               />
               <LabeledInput
                 type="password"
@@ -86,7 +96,7 @@ const RegistrationUser = () => {
                 required={true}
                 register={register}
                 errors={errors}
-                 watch={watch}
+                watch={watch}
               />
 
               {/* Forgot + Button */}

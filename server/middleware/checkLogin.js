@@ -10,7 +10,6 @@ const jwt = require("jsonwebtoken");
 const checkLogin = async (req, res, next) => {
   try {
     const token = req.headers?.authorization?.split(" ")?.[1];
-    // const token = req.headers?.authorization?.split(" ")?.[1];
     if (!token) {
       return res.status(401).json({
         status: "fail",
@@ -19,15 +18,6 @@ const checkLogin = async (req, res, next) => {
       });
     }
 
-    // const decoded = await promisify(jwt.verify)(
-    //   token,
-    //   process.env.USER_SECRET_TOKEN
-    // );
-    // const user = User.findOne({email: decoded.email})
-    // req.user = decoded; // user role email = decoded
-    // next();
-    // jwt verify other way
-    // console.log(jwt);
     jwt.verify(token, process.env.JWT_SECRET_KEY, function (err, decoded) {
       if (err) {
         return res.status(403).json({

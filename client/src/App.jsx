@@ -11,6 +11,7 @@ import BlogDetails from "./view/FrontEnd/Pages/BlogDetails";
 import LoginUser from "./view/Auth/LoginUser";
 import RegistrationUser from "./view/Auth/RegistrationUser";
 import LoginAdmin from "./view/Auth/LoginAdmin";
+import PrivateRoute from "./routes/PrivateRoute";
 
 function App() {
   return (
@@ -31,9 +32,9 @@ function App() {
       <Route
         path="/user"
         element={
-         
+          <PrivateRoute>
             <UserLayout />
-        
+          </PrivateRoute>
         }
       >
         <Route path="dashboard" element={<h1>User Dashboard</h1>} />
