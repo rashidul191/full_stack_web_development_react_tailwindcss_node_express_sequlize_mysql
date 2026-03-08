@@ -18,6 +18,8 @@ import SocialLinks from "./view/Admin/Setting/SocialLinks";
 import BlogPage from "./view/FrontEnd/pages/BlogPage";
 import BlogIndex from "./view/Admin/Blog/BlogIndex";
 import BlogForm from "./view/Admin/Blog/BlogForm";
+import CategoryIndex from "./view/Admin/Category/CategoryIndex";
+import CategoryForm from "./view/Admin/Category/CategoryForm";
 
 function App() {
   return (
@@ -55,9 +57,9 @@ function App() {
       <Route
         path="/admin"
         element={
-          <PrivateRoute role={ROLES.ADMIN}>
-            <AdminLayout />
-          </PrivateRoute>
+          // <PrivateRoute role={ROLES.ADMIN}>
+          <AdminLayout />
+          // </PrivateRoute>
         }
       >
         <Route path="dashboard" element={<h1>Admin Dashboard</h1>} />
@@ -65,6 +67,12 @@ function App() {
           <Route path="" element={<BlogIndex />} />
           <Route path="create" element={<BlogForm />} />
           <Route path="edit/:id" element={<BlogForm />} />
+        </Route>
+
+        <Route path="category">
+          <Route path="" element={<CategoryIndex />} />
+          <Route path="create" element={<CategoryForm />} />
+          <Route path="edit/:id" element={<CategoryForm />} />
         </Route>
 
         <Route path="setting">

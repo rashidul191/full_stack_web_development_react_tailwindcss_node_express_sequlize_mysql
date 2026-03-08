@@ -6,7 +6,8 @@ import LabeledInput from "../../Components/LabeledInput";
 import SubmitBtn from "../../Components/SubmitBtn";
 import { getBusinessSettings } from "../../../utility/businessSetting";
 import Loading from "../../Common/Loading";
-import { createFormData } from "../../../utility/formDataHelper";
+import { createFormDataWithFile } from "../../../utility/formDataHelper";
+import HeaderSection from "../../Components/HeaderSection";
 
 export default function SocialLinks() {
   const [loading, setLoading] = useState(true);
@@ -30,7 +31,7 @@ export default function SocialLinks() {
   }, []);
 
   const onSubmit = async (data) => {
-    const formData = createFormData(data); // helper function with image manage
+    const formData = createFormDataWithFile(data); // helper function with image manage
     try {
       const res = await api.post(`/admin/business-setting`, formData);
       if (res?.data?.status === "success") {
@@ -48,7 +49,7 @@ export default function SocialLinks() {
 
   return (
     <>
-      <h3 className="text-lg font-semibold">Social Links</h3>
+      <HeaderSection title={"Social Links"}></HeaderSection>
       <div className="shadow-md p-4 rounded mt-5">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
           <div className="w-full md:flex flex-wrap items-end">

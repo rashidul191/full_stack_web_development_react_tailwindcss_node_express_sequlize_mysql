@@ -22,7 +22,7 @@ const ApplicationLogo = (props) => {
         <img
           className={`w-auto p-4 ${className}`}
           src={imageUrl(businessSetting.logo) ?? logo}
-          alt="Company Logo"
+          alt="Logo"
         />
       </div>
     </>

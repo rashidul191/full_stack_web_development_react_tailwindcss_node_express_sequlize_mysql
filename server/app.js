@@ -30,6 +30,9 @@ app.use("/api/admin/login", adminLoginRoutes);
 const adminRegisterRoutes = require("./routes/admin/auth/register.route");
 app.use("/api/admin/register", adminRegisterRoutes);
 
+const adminCategory = require("./routes/admin/category.route");
+app.use("/api/admin/category", adminCategory);
+
 const businessRoutes = require("./routes/admin/business.route");
 app.use("/api/admin/business-setting", businessRoutes);
 

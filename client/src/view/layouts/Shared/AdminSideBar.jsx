@@ -28,7 +28,7 @@ const AdminSidebar = () => {
         },
         {
           title: "Categories",
-          path: "/categories",
+          path: "/category",
         },
       ],
     },

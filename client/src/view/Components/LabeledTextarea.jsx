@@ -32,7 +32,7 @@ const LabeledTextarea = ({
 
       <textarea
         rows={3}
-        className={`border-2 border-gray-500 p-1.5 rounded-mf w-full ${className}`}
+        className={`border-2 border-gray-500 p-1.5 rounded-md w-full ${className}`}
         placeholder={placeholder}
         {...register(name, {
           required: required ? `${finalLabel} is Required` : false,

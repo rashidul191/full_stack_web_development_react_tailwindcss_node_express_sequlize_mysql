@@ -28,12 +28,10 @@ const RegistrationUser = () => {
 
     try {
       const res = await api.post(`/register`, formData);
-
       if (res?.data?.status === "success") {
         registerUser(res?.data?.data);
         // navigator("/");
-        toast.success(res.data.message);
-
+        toast.success(res?.data?.message);
         navigator("/user/dashboard");
       }
     } catch (error) {

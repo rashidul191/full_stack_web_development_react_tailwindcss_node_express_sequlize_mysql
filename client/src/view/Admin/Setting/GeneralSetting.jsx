@@ -7,22 +7,13 @@ import SubmitBtn from "../../Components/SubmitBtn";
 import { getBusinessSettings } from "../../../utility/businessSetting";
 import { imageUrl } from "../../../utility/imageUrl";
 import Loading from "../../Common/Loading";
-import { createFormData } from "../../../utility/formDataHelper";
+import { createFormDataWithFile } from "../../../utility/formDataHelper";
+import HeaderSection from "../../Components/HeaderSection";
+import useImagePreview from "../../../utility/useImagePreview";
 
 export default function GeneralSetting() {
   const [loading, setLoading] = useState(true);
-  /* Preview Image Hnadle Start */
-  const [previewImage, setPreviewImage] = useState({});
-  const handleImageChange = (e) => {
-    const { name, files } = e.target;
-    if (files[0]) {
-      setPreviewImage((prev) => ({
-        ...prev,
-        [name]: URL.createObjectURL(files[0]),
-      }));
-    }
-  };
-  /* Preview Image Hnadle End*/
+  const { previewImage, handleImageChange } = useImagePreview(); // image preview custom hook
   const [businessSetting, setBusinessSetting] = useState({});
   const {
     register,
@@ -42,7 +33,7 @@ export default function GeneralSetting() {
     fetchSettings();
   }, []);
   const onSubmit = async (data) => {
-    const formData = createFormData(data); // helper function with image manage
+    const formData = createFormDataWithFile(data); // helper function with image manage
     try {
       const res = await api.post(`/admin/business-setting`, formData);
       if (res?.data?.status === "success") {
@@ -60,8 +51,8 @@ export default function GeneralSetting() {
 
   return (
     <>
-      <h3 className="text-lg font-semibold">General Setting</h3>
-      <div className="shadow-md p-4 rounded mt-5">
+      <HeaderSection title={"General Setting"}></HeaderSection>
+      <div className="shadow-lg p-4 rounded mt-5">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
           <div className="w-full md:flex flex-wrap items-end">
             <div className="w-full md:w-1/2 p-1">

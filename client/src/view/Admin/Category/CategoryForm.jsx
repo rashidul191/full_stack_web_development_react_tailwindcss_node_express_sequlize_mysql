@@ -8,9 +8,12 @@ import LabeledInput from "../../Components/LabeledInput";
 import SubmitBtn from "../../Components/SubmitBtn";
 import LabeledTextarea from "../../Components/LabeledTextarea";
 import useImagePreview from "../../../utility/useImagePreview";
+import { createFormDataWithFile } from "../../../utility/formDataHelper";
+import { useNavigate } from "react-router-dom";
 
-export default function BlogForm() {
+export default function CategoryForm() {
   const { previewImage, handleImageChange } = useImagePreview(); // image preview custom hook
+  const navigator = useNavigate();
   const { auth } = useContext(AuthContext);
   const id = false;
   console.log(auth);
@@ -20,58 +23,53 @@ export default function BlogForm() {
     handleSubmit,
   } = useForm();
   const onSubmit = async (data) => {
-    console.log(data);
+    // create slug
+    const slug = data.name.toLowerCase().replace(/\s+/g, "-");
+    data.slug = slug;
+    const formData = createFormDataWithFile(data);
     try {
-      const res = await api.post(`/admin/blog`, data);
+      const res = await api.post(`/admin/category`, formData);
       if (res?.data?.status === "success") {
-        console.log(res?.data?.data);
         toast.success(res?.data?.message);
-        navigator("/admin/blog");
+        navigator("/admin/category");
       }
     } catch (error) {
+      console.log(error);
       toast.error(error.response?.data?.message);
     }
   };
   return (
     <>
       <HeaderSection
-        title={`Blog ${id ? "Edit" : "Create"}`}
-        backLink={"/admin/blog"}
+        title={`Category ${id ? "Edit" : "Create"}`}
+        backLink={"/admin/category"}
       ></HeaderSection>
 
       <div className="shadow-lg p-4 rounded mt-5">
         <form onSubmit={handleSubmit(onSubmit)} className="">
           <div className="w-full flex flex-wrap">
-            <div className="w-full md:w-3/5 p-2">
+            <div className="w-full p-1">
+              {previewImage.image ? (
+                <img className="w-12 h-12" src={previewImage.image} alt="" />
+              ) : (
+                ""
+              )}
+
               <LabeledInput
-                name="title"
-                required={true}
+                type="file"
+                name="image"
+                onChange={handleImageChange}
                 register={register}
                 errors={errors}
               />
-
-              <LabeledTextarea name="description" register={register} />
             </div>
-            <div className="w-full md:w-2/5 p-2">
-              <div>
-                {previewImage.image ? (
-                  <img className="w-12 h-12" src={previewImage.image} alt="" />
-                ) : (
-                  ""
-                )}
-
-                <LabeledInput
-                  type="file"
-                  name="image"
-                  onChange={handleImageChange}
-                  required={true}
-                  register={register}
-                  errors={errors}
-                />
-              </div>
-
-              <LabeledTextarea name="short_description" register={register} />
-            </div>
+            <LabeledInput
+              name="name"
+              className="w-full p-1"
+              required={true}
+              register={register}
+              errors={errors}
+            />
           </div>
 
           {/* Forgot + Button */}

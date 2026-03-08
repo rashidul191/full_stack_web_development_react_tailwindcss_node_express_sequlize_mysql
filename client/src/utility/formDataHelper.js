@@ -1,4 +1,4 @@
-export const createFormData = (data) => {
+export const createFormDataWithFile = (data) => {
   const formData = new FormData();
 
   Object.entries(data).forEach(([key, value]) => {
