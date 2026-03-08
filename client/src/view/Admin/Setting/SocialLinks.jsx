@@ -5,25 +5,13 @@ import toast from "../../../utility/toast";
 import LabeledInput from "../../Components/LabeledInput";
 import SubmitBtn from "../../Components/SubmitBtn";
 import { getBusinessSettings } from "../../../utility/businessSetting";
-import { imageUrl } from "../../../utility/imageUrl";
 import Loading from "../../Common/Loading";
 import { createFormData } from "../../../utility/formDataHelper";
 
-export default function GeneralSetting() {
+export default function SocialLinks() {
   const [loading, setLoading] = useState(true);
-  /* Preview Image Hnadle Start */
-  const [previewImage, setPreviewImage] = useState({});
-  const handleImageChange = (e) => {
-    const { name, files } = e.target;
-    if (files[0]) {
-      setPreviewImage((prev) => ({
-        ...prev,
-        [name]: URL.createObjectURL(files[0]),
-      }));
-    }
-  };
-  /* Preview Image Hnadle End*/
   const [businessSetting, setBusinessSetting] = useState({});
+  console.log(businessSetting);
   const {
     register,
     formState: { errors },
@@ -61,86 +49,44 @@ export default function GeneralSetting() {
 
   return (
     <>
-      <h3 className="text-lg font-semibold">General Setting</h3>
+      <h3 className="text-lg font-semibold">Social Links</h3>
       <div className="shadow-md p-4 rounded mt-5">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
           <div className="w-full md:flex flex-wrap items-end">
-            <div className="w-full md:w-1/2 p-1">
-              <img
-                className="w-12 h-12"
-                src={
-                  previewImage.meta_icon || imageUrl(businessSetting?.meta_icon)
-                }
-                alt=""
-              />
-              <LabeledInput
-                type="file"
-                name="meta_icon"
-                onChange={handleImageChange}
-                register={register}
-                errors={errors}
-              />
-            </div>
-            <div className="w-full md:w-1/2 p-1">
-              <img
-                className="w-12 h-12"
-                src={previewImage.logo || imageUrl(businessSetting?.logo)}
-                alt=""
-              />
-              <LabeledInput
-                type="file"
-                name="logo"
-                onChange={handleImageChange}
-                register={register}
-                errors={errors}
-              />
-            </div>
-
             <LabeledInput
               className="w-full md:w-1/2 p-1"
-              name="company_name"
-              value={businessSetting?.company_name}
+              name="fb_link"
+              value={businessSetting?.fb_link}
               register={register}
               errors={errors}
             />
 
             <LabeledInput
               className="w-full md:w-1/2 p-1"
-              name="phone"
-              value={businessSetting?.phone}
+              name="youtube_link"
+              value={businessSetting?.youtube_link}
               register={register}
               errors={errors}
             />
 
             <LabeledInput
               className="w-full md:w-1/2 p-1"
-              name="whatsapp"
-              value={businessSetting?.whatsapp}
+              name="instagram_link"
+              value={businessSetting?.instagram_link}
               register={register}
               errors={errors}
             />
-
             <LabeledInput
               className="w-full md:w-1/2 p-1"
-              type="email"
-              name="email"
-              value={businessSetting?.email}
+              name="twiter_link"
+              value={businessSetting?.twiter_link}
               register={register}
               errors={errors}
             />
-
             <LabeledInput
               className="w-full md:w-1/2 p-1"
-              name="address"
-              value={businessSetting?.address}
-              register={register}
-              errors={errors}
-            />
-
-            <LabeledInput
-              className="w-full md:w-1/2 p-1"
-              name="copyright_text"
-              value={businessSetting?.copyright_text}
+              name="linkedin_link"
+              value={businessSetting?.linkedin_link}
               register={register}
               errors={errors}
             />

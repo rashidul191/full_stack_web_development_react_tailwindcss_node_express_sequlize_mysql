@@ -15,6 +15,7 @@ import PrivateRoute from "./routes/PrivateRoute";
 
 import GeneralSetting from "./view/Admin/Setting/GeneralSetting";
 import { ROLES } from "./utility/roles";
+import SocialLinks from "./view/Admin/Setting/SocialLinks";
 
 function App() {
   return (
@@ -61,7 +62,7 @@ function App() {
         <Route path="users" element={<h1>Manage Users</h1>} />
         <Route path="setting">
           <Route path="general" element={<GeneralSetting />} />
-          <Route path="social-links" element={<GeneralSetting />} />
+          <Route path="social-links" element={<SocialLinks />} />
           <Route path="profile" element={<GeneralSetting />} />
         </Route>
       </Route>
