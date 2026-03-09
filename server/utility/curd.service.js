@@ -1,27 +1,27 @@
 // get all data
 module.exports.indexService = async (model) => {
-  const result = await model.findAll({});
-  return result;
+  const index = await model.findAll({});
+  return index;
 };
 
 // create data
 module.exports.createService = async (model, data) => {
-  const result = await model.create(data);
-  return result;
+  const create = await model.create(data);
+  return create;
 };
 
 // get single by id
 module.exports.showService = async (model, id) => {
-  const result = await model.findByPk(id);
-  return result;
+  const show = await model.findByPk(id);
+  return show;
 };
 
 // update single by id
 module.exports.updateService = async (model, id, data) => {
   const record = await model.findByPk(id);
   if (!record) throw new Error("Record not found");
-  const result = await record.update(data);
-  return result;
+  const update = await record.update(data);
+  return update;
 };
 
 // bulk update multiple records
@@ -36,10 +36,13 @@ module.exports.bulkUpdateService = async (model, dataArray) => {
 
 // delete single by id
 module.exports.deleteService = async (model, id) => {
-  const record = await model.findByPk(id);
-  if (!record) throw new Error("Record not found");
-  await record.destroy();
-  return { message: "Deleted successfully" };
+  const deleted = await model.destroy({
+    where: { id },
+  });
+  if (!deleted) {
+    throw new Error("Record not found");
+  }
+  return deleted;
 };
 
 // bulk delete

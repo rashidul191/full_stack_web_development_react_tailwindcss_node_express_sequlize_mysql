@@ -30,10 +30,6 @@ export default function CategoryIndex() {
     fetchDataFromApi();
   }, []);
 
-  const handleDelete = (id) => {
-    console.log(id);
-  };
-
   const columns = [
     {
       name: "Image",
@@ -71,6 +67,20 @@ export default function CategoryIndex() {
     },
   ];
 
+  const handleDelete = async (id) => {
+    const confirmDelete = await toast.delete();
+    if (!confirmDelete) return;
+    try {
+      const res = await api.delete(`/admin/category/${id}`);
+      if (res?.data?.status === "success") {
+        toast.success(res?.data?.message);
+        setCategories((prev) => prev.filter((item) => item.id !== id));
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message);
+    }
+  };
+
   if (loding) {
     return <Loading />;
   }
@@ -81,7 +91,7 @@ export default function CategoryIndex() {
         createLink={"/admin/category/create"}
       ></HeaderSection>
 
-      <div>
+      <div className="shadow">
         <TableData
           columns={columns}
           data={categories}

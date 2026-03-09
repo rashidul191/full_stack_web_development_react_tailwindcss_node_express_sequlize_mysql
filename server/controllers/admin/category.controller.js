@@ -13,7 +13,6 @@ const {
 module.exports.index = async (req, res) => {
   try {
     const result = await indexService(Category);
-    console.log(result)
     sendSuccess(res, "Find All successful", result);
   } catch (error) {
     sendError(res, "Can't find data in the database!!", error);
@@ -28,7 +27,7 @@ module.exports.create = async (req, res, next) => {
     sendSuccess(res, "Successfully create category!", result);
   } catch (error) {
     next();
-    console.log(error);
+    console.log("create: ", error);
     sendError(res, "Can't create data!!", error);
   }
 };
@@ -97,6 +96,12 @@ module.exports.update = async (req, res, next) => {
   }
 };
 
-module.exports.delete = (req, res, next) => {
-  res.send("Delete blog");
+module.exports.delete = async (req, res, next) => {
+  const result = await deleteService(Category, req.params.id);
+  try {
+    sendSuccess(res, "Delete successfully!!", result);
+  } catch (error) {
+    next();
+    sendError(res, "Can't delete data!!", error);
+  }
 };
