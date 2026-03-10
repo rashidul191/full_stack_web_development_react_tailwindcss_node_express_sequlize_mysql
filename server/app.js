@@ -33,6 +33,9 @@ app.use("/api/admin/register", adminRegisterRoutes);
 const adminCategory = require("./routes/admin/category.route");
 app.use("/api/admin/category", adminCategory);
 
+const adminBlog = require("./routes/admin/blog.route");
+app.use("/api/admin/blog", adminBlog);
+
 const businessRoutes = require("./routes/admin/business.route");
 app.use("/api/admin/business-setting", businessRoutes);
 
