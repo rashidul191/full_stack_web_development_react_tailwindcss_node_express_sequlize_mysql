@@ -6,10 +6,10 @@ import LabeledInput from "../../Components/LabeledInput";
 import SubmitBtn from "../../Components/SubmitBtn";
 import { getBusinessSettings } from "../../../utility/businessSetting";
 import { imageUrl } from "../../../utility/imageUrl";
-import Loading from "../../Common/Loading";
 import { createFormDataWithFile } from "../../../utility/formDataHelper";
 import HeaderSection from "../../Components/HeaderSection";
 import { useImagePreview } from "../../../hook/customHook";
+import Loading from "../../layouts/Shared/Loading";
 
 export default function GeneralSetting() {
   const [loading, setLoading] = useState(true);

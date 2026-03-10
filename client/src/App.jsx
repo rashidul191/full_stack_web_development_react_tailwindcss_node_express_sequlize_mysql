@@ -1,6 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import "./App.css";
-
 import FrontLayout from "./view/layouts/FrontLayout";
 import UserLayout from "./view/layouts/UserLayout";
 import AdminLayout from "./view/layouts/AdminLayout";

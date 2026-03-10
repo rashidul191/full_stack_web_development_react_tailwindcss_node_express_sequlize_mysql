@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import HeaderSection from "../../Components/HeaderSection";
 import { AuthContext } from "../../../context/AuthContext";
@@ -6,8 +6,8 @@ import LabeledInput from "../../Components/LabeledInput";
 import SubmitBtn from "../../Components/SubmitBtn";
 import { useNavigate, useParams } from "react-router-dom";
 import { imageUrl } from "../../../utility/imageUrl";
-import Loading from "../../Common/Loading";
 import { useApiHook, useImagePreview } from "../../../hook/customHook";
+import Loading from "../../layouts/Shared/Loading";
 
 export default function CategoryForm() {
   const { previewImage, handleImageChange } = useImagePreview();

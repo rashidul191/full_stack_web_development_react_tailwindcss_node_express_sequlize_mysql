@@ -5,9 +5,9 @@ import toast from "../../../utility/toast";
 import LabeledInput from "../../Components/LabeledInput";
 import SubmitBtn from "../../Components/SubmitBtn";
 import { getBusinessSettings } from "../../../utility/businessSetting";
-import Loading from "../../Common/Loading";
 import { createFormDataWithFile } from "../../../utility/formDataHelper";
 import HeaderSection from "../../Components/HeaderSection";
+import Loading from "../../layouts/Shared/Loading";
 
 export default function SocialLinks() {
   const [loading, setLoading] = useState(true);

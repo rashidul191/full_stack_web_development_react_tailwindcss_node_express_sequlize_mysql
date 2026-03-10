@@ -1,10 +1,10 @@
 import HeaderSection from "../../Components/HeaderSection";
-import Loading from "../../Common/Loading";
 import TableData from "../../../lib/TableData";
 import { imageUrl } from "../../../utility/imageUrl";
 import { Eye, PenBoxIcon, Trash2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useApiHook } from "../../../hook/customHook";
+import Loading from "../../layouts/Shared/Loading";
 
 export default function CategoryIndex() {
   const {
