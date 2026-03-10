@@ -1,7 +1,7 @@
-const { Blog } = require("../../models/index.js");
+const { Slider } = require("../../models/index.js");
 const { sendSuccess, sendError } = require("../../utility/response.handle.js");
 const ImageFile = require("../../lib/ImageFile.js");
-const imageHandler = new ImageFile("blogs");
+const imageHandler = new ImageFile("sliders");
 const {
   indexService,
   createService,
@@ -12,8 +12,8 @@ const {
 
 module.exports.index = async (req, res) => {
   try {
-    const result = await indexService(Blog);
-  
+    const result = await indexService(Slider);
+
     sendSuccess(res, "Find All successful", result);
   } catch (error) {
     sendError(res, "Can't find data in the database!!", error);
@@ -24,8 +24,8 @@ module.exports.create = async (req, res, next) => {
   try {
     const data = req.body;
     data.image = req.file ? imageHandler.store(req.file) : null;
-    const result = await createService(Blog, data);
-    sendSuccess(res, "Successfully create Blog!", result);
+    const result = await createService(Slider, data);
+    sendSuccess(res, "Successfully create Slider!", result);
   } catch (error) {
     next();
     console.log("create: ", error);
@@ -35,7 +35,7 @@ module.exports.create = async (req, res, next) => {
 
 module.exports.show = async (req, res) => {
   try {
-    const result = await showService(Blog, req.params.id);
+    const result = await showService(Slider, req.params.id);
     sendSuccess(res, "Successfully found single data!!", result);
   } catch (error) {
     sendError(res, "Can't find data in the database!!", error);
@@ -46,22 +46,22 @@ module.exports.update = async (req, res) => {
   try {
     const id = req.params.id;
     const data = req.body;
-    const record = await Blog.findByPk(id);
+    const record = await Slider.findByPk(id);
     if (!record) throw new Error("Record not found");
     if (req.file) {
       data.image = imageHandler.store(req.file);
     } else {
       data.image = record.image;
     }
-    const result = await updateService(Blog, id, data);
+    const result = await updateService(Slider, id, data);
     sendSuccess(res, "Updated successfully!!", result);
   } catch (error) {
-    sendError(res, "Can't update Blog!!", error);
+    sendError(res, "Can't update Slider!!", error);
   }
 };
 
 module.exports.delete = async (req, res, next) => {
-  const result = await deleteService(Blog, req.params.id);
+  const result = await deleteService(Slider, req.params.id);
   try {
     sendSuccess(res, "Delete successfully!!", result);
   } catch (error) {

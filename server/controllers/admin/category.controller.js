@@ -1,7 +1,7 @@
 const { Category } = require("../../models/index.js");
 const { sendSuccess, sendError } = require("../../utility/response.handle.js");
 const ImageFile = require("../../lib/ImageFile.js");
-const imageHandler = new ImageFile("categoris");
+const imageHandler = new ImageFile("categories");
 const {
   indexService,
   createService,

@@ -36,6 +36,8 @@ app.use("/api/admin/category", adminCategory);
 const adminBlog = require("./routes/admin/blog.route");
 app.use("/api/admin/blog", adminBlog);
 
+app.use("/api/admin/slider", require("./routes/admin/slider.route"));
+
 const businessRoutes = require("./routes/admin/business.route");
 app.use("/api/admin/business-setting", businessRoutes);
 
