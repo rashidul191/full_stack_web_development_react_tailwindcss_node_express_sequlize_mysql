@@ -4,7 +4,7 @@ import Navbar from "../FrontEnd/Common/Navbar";
 import Footer from "../FrontEnd/Common/Footer";
 import { useCss, useScript } from "../../hook/customHook";
 
-const FrontLayout = () => {
+const FrontendLayout = () => {
   let cssAssets = [
     "/flaticon.css",
     "/all.min.css",
@@ -32,4 +32,4 @@ const FrontLayout = () => {
   );
 };
 
-export default FrontLayout;
+export default FrontendLayout;

@@ -1,115 +1,24 @@
 import { Routes, Route } from "react-router-dom";
-import FrontLayout from "./view/layouts/FrontLayout";
-import UserLayout from "./view/layouts/UserLayout";
-import AdminLayout from "./view/layouts/AdminLayout";
-import Home from "./view/FrontEnd/Pages/Home";
 import NotFound from "./view/FrontEnd/Pages/NotFound";
-import BlogDetails from "./view/FrontEnd/Pages/BlogDetails";
-import LoginUser from "./view/Auth/LoginUser";
-import RegistrationUser from "./view/Auth/RegistrationUser";
-import LoginAdmin from "./view/Auth/LoginAdmin";
-import PrivateRoute from "./routes/PrivateRoute";
-
-import GeneralSetting from "./view/Admin/Setting/GeneralSetting";
-import { ROLES } from "./enum/Roles";
-import SocialLinks from "./view/Admin/Setting/SocialLinks";
-import BlogPage from "./view/FrontEnd/pages/BlogPage";
-import BlogIndex from "./view/Admin/Blog/BlogIndex";
-import BlogForm from "./view/Admin/Blog/BlogForm";
-import CategoryIndex from "./view/Admin/Category/CategoryIndex";
-import CategoryForm from "./view/Admin/Category/CategoryForm";
-import SliderIndex from "./view/Admin/Slider/SliderIndex";
-import SliderForm from "./view/Admin/Slider/SliderForm";
-import ReviewIndex from "./view/Admin/Review/ReviewIndex";
-import ReviewForm from "./view/Admin/Review/ReviewForm";
-import AdminDashboard from "./view/Admin/AdminDashboard";
-import MenuIndex from "./view/Admin/Menu/MenuIndex";
-import MenuForm from "./view/Admin/Menu/MenuForm";
-import SubMenuIndex from "./view/Admin/SubMenu/SubMenuIndex";
-import SubMenuForm from "./view/Admin/SubMenu/SubMenuForm";
+import { FrontendRoutes } from "./routes/FrontendRoutes";
+import { UserRoutes } from "./routes/UserRoutes";
+import { AdminRoutes } from "./routes/adminRoutes";
+import { AuthRoutes } from "./routes/AuthRoutes";
 
 function App() {
   return (
     <Routes>
-      {/* FrontEnd Layout */}
-      <Route element={<FrontLayout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/blog" element={<BlogPage />} />
-        <Route path="/blog/:id" element={<BlogDetails />} />
-      </Route>
+      {/* Frontend Routes */}
+      {FrontendRoutes}
 
-      {/* User Auth Route */}
-      <Route path="/login" element={<LoginUser />} />
-      <Route path="/register" element={<RegistrationUser />} />
-      <Route path="/forgot-password" element={<h1>Forgot Password</h1>} />
+      {/* Auth Routes */}
+      {AuthRoutes}
 
-      {/* User Panel [role from backend enum value] User = 1*/}
-      <Route
-        path="/user"
-        element={
-          <PrivateRoute role={ROLES.USER}>
-            <UserLayout />
-          </PrivateRoute>
-        }
-      >
-        <Route path="dashboard" element={<h1>User Dashboard</h1>} />
-        <Route path="profile" element={<h1>User Profile</h1>} />
-      </Route>
+      {/* User Routes */}
+      {UserRoutes}
 
-      {/* Admin Auth Route  */}
-      <Route path="/admin/login" element={<LoginAdmin />} />
-      {/* <Route path="/register" element={<h1>Register</h1>} /> */}
-
-      {/* Admin Panel [role from backend enum value] Admin = 0 */}
-      <Route
-        path="/admin"
-        element={
-          // <PrivateRoute role={ROLES.ADMIN}>
-          <AdminLayout />
-          // </PrivateRoute>
-        }
-      >
-        <Route path="dashboard" element={<AdminDashboard></AdminDashboard>} />
-
-        <Route path="menu">
-          <Route path="" element={<MenuIndex />} />
-          <Route path="create" element={<MenuForm />} />
-          <Route path="edit/:id" element={<MenuForm />} />
-        </Route>
-        <Route path="sub-menu">
-          <Route path="" element={<SubMenuIndex />} />
-          <Route path="create" element={<SubMenuForm />} />
-          <Route path="edit/:id" element={<SubMenuForm />} />
-        </Route>
-        <Route path="slider">
-          <Route path="" element={<SliderIndex />} />
-          <Route path="create" element={<SliderForm />} />
-          <Route path="edit/:id" element={<SliderForm />} />
-        </Route>
-        <Route path="review">
-          <Route path="" element={<ReviewIndex />} />
-          <Route path="create" element={<ReviewForm />} />
-          <Route path="edit/:id" element={<ReviewForm />} />
-        </Route>
-
-        <Route path="blog">
-          <Route path="" element={<BlogIndex />} />
-          <Route path="create" element={<BlogForm />} />
-          <Route path="edit/:id" element={<BlogForm />} />
-        </Route>
-
-        <Route path="category">
-          <Route path="" element={<CategoryIndex />} />
-          <Route path="create" element={<CategoryForm />} />
-          <Route path="edit/:id" element={<CategoryForm />} />
-        </Route>
-
-        <Route path="setting">
-          <Route path="general" element={<GeneralSetting />} />
-          <Route path="social-links" element={<SocialLinks />} />
-          {/* <Route path="profile" element={<GeneralSetting />} /> */}
-        </Route>
-      </Route>
+      {/* Admin Routes */}
+      {AdminRoutes}
 
       {/* Not Found */}
       <Route path="*" element={<NotFound />} />
