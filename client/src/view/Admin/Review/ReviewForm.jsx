@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import HeaderSection from "../../Components/HeaderSection";
 import { AuthContext } from "../../../context/AuthContext";
 import LabeledInput from "../../Components/LabeledInput";
@@ -9,6 +9,7 @@ import { useApiHook, useImagePreview } from "../../../hook/customHook";
 import Loading from "../../layouts/Shared/Loading";
 import { useNavigate, useParams } from "react-router-dom";
 import { imageUrl } from "../../../utility/imageUrl";
+import RichTextEditor from "../../Components/RichTextEditor";
 
 export default function ReviewForm() {
   const { previewImage, handleImageChange } = useImagePreview();
@@ -26,6 +27,7 @@ export default function ReviewForm() {
   ); // custom hook
 
   const {
+    control,
     register,
     reset,
     formState: { errors },
@@ -102,10 +104,18 @@ export default function ReviewForm() {
               errors={errors}
             />
 
-            <LabeledTextarea
+            {/* <LabeledTextarea
               name="review_text"
               register={register}
               className="w-full p-1"
+            /> */}
+
+            <RichTextEditor
+              name="review_text"
+              label="Review Text"
+              control={control}
+              errors={errors}
+              required
             />
           </div>
 

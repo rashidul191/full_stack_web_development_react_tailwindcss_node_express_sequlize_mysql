@@ -3,6 +3,7 @@ import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useApiHook } from "../../../../hook/customHook";
 import { imageUrl } from "../../../../utility/imageUrl";
+import HtmlContent from "../../../Components/HtmlContent";
 
 export default function ClientReviewSection() {
   const { data: reviews } = useApiHook("/admin/review");
@@ -45,7 +46,10 @@ export default function ClientReviewSection() {
                               d="M57.053,48.209 L42.790,48.209 L52.299,29.242 L38.036,29.242 L38.036,0.790 L66.562,0.790 L66.562,29.242 L57.053,48.209 ZM4.755,48.209 L14.263,29.242 L0.000,29.242 L0.000,0.790 L28.527,0.790 L28.527,29.242 L19.018,48.209 L4.755,48.209 Z"
                             />
                           </svg>
-                          <div className="text-white">{item?.review_text}</div>
+                          {/* <div className="text-white">{item?.review_text}</div> */}
+                          <div className="text-white">
+                            <HtmlContent content={item?.review_text} />
+                          </div>
                         </div>
 
                         <div className="testimonial-founder d-flex align-items-center justify-content-center">
