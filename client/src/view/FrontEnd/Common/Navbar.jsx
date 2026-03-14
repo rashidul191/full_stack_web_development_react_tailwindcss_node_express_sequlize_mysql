@@ -47,9 +47,7 @@ const Navbar = () => {
         <NavLink to="/blog">Blog</NavLink>
       </li>
       <li>
-        <a href="https://preview.colorlib.com/theme/consultingbiz/contact.html">
-          Contact
-        </a>
+        <NavLink to="/contact-us">Contact</NavLink>
         {/* <ul className="submenu">
           <li>
             <a href="https://preview.colorlib.com/theme/consultingbiz/contact.html">

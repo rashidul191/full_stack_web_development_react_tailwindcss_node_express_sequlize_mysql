@@ -6,6 +6,7 @@ import BlogDetails from "../view/FrontEnd/Pages/BlogDetails";
 import FrontendLayout from "../view/layouts/FrontEndLayout";
 import TopMenuContent from "../view/FrontEnd/Pages/TopMenuContent";
 import SubMenuContent from "../view/FrontEnd/Pages/SubMenuContent";
+import Contact from "../view/FrontEnd/pages/Contact";
 
 export const FrontendRoutes = (
   <>
@@ -13,8 +14,10 @@ export const FrontendRoutes = (
       <Route path="/" element={<Home />} />
       <Route path="/blog" element={<BlogPage />} />
       <Route path="/blog/:slug" element={<BlogDetails />} />
-      <Route path="/:slug" element={<TopMenuContent></TopMenuContent>} />
-      <Route path="/:slug/:slug" element={<SubMenuContent></SubMenuContent>} />
+      <Route path="/:slug" element={<TopMenuContent />} />
+      <Route path="/:slug/:slug" element={<SubMenuContent />} />
+
+      <Route path="/contact-us" element={<Contact />} />
     </Route>
   </>
 );

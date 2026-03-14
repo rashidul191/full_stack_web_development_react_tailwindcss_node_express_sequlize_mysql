@@ -36,13 +36,20 @@ module.exports.createService = async (model, data) => {
   return await model.create(data);
 };
 
-// get single by id
+// get single by id, slug
 module.exports.showService = async (model, column, options = {}) => {
-  // return await model.findByPk(id, options);
+  const conditions = [];
+
+  if (!isNaN(column)) {
+    conditions.push({ id: column });
+  }
+
+  if (model.rawAttributes.slug) {
+    conditions.push({ slug: column });
+  }
+
   return await model.findOne({
-    where: {
-      [Op.or]: [{ id: column }, { slug: column }],
-    },
+    where: { [Op.or]: conditions },
     ...options,
   });
 };

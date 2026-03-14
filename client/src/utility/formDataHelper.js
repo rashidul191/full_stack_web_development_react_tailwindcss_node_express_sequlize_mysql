@@ -23,10 +23,11 @@ export const createFormDataWithFile = (data) => {
 
 // empty string → null convert
 export const createFormData = (data) => {
-  Object.fromEntries(
+  const onlyData = Object.fromEntries(
     Object.entries(data).map(([key, value]) => [
       key,
       value === "" ? null : value,
     ]),
   );
+  return onlyData;
 };

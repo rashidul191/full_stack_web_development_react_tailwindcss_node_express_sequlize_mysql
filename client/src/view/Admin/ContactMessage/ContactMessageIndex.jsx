@@ -35,12 +35,12 @@ export default function ContactMessageIndex() {
       center: true,
       cell: (row) => (
         <div className="flex gap-2">
-          {/* <Link to={`show/${row.id}`}>
+          <Link to={`show/${row.id}`}>
             <Eye className="size-5 cursor-pointer transition-all duration-200 hover:scale-110" />
-          </Link> */}
-          <Link to={`edit/${row.id}`}>
-            <PenBoxIcon className="size-5 cursor-pointer transition-all duration-200 hover:scale-110" />
           </Link>
+          {/* <Link to={`edit/${row.id}`}>
+            <PenBoxIcon className="size-5 cursor-pointer transition-all duration-200 hover:scale-110" />
+          </Link> */}
 
           <Trash2
             className="size-5 cursor-pointer transition-all duration-200 hover:scale-110"

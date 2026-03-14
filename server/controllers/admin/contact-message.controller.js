@@ -3,9 +3,7 @@ const { sendSuccess, sendError } = require("../../utility/response.handle.js");
 
 const {
   indexService,
-  createService,
   showService,
-  updateService,
   deleteService,
 } = require("../../utility/curd.service.js");
 
@@ -22,6 +20,7 @@ module.exports.index = async (req, res) => {
 module.exports.show = async (req, res) => {
   try {
     let id = req.params.id;
+    console.log(id);
     const result = await showService(ContactMessage, id);
     sendSuccess(res, "Successfully found single data!!", result);
   } catch (error) {

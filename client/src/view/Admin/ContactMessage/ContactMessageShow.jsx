@@ -5,7 +5,11 @@ import Loading from "../../layouts/Shared/Loading";
 
 export default function ContactMessageShow() {
   const { id } = useParams();
-  const { data: message, loading } = useApiHook(`/admin/contact-message/${id}`);
+  const {
+    data: message,
+    loading,
+    deleteData,
+  } = useApiHook(`/admin/contact-message/${id}`);
 
   if (loading) {
     return <Loading />;
@@ -56,7 +60,7 @@ export default function ContactMessageShow() {
         {/* Message */}
         <div className="mt-6">
           <h4 className="text-sm font-semibold text-gray-500 mb-2">Message</h4>
-          <div className="bg-gray-50 p-4 rounded border text-gray-700 leading-relaxed">
+          <div className="bg-gray-50 p-4 rounded text-gray-700 leading-relaxed">
             {message?.message}
           </div>
         </div>

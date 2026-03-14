@@ -22,6 +22,7 @@ import SocialLinks from "../view/Admin/Setting/SocialLinks";
 import TeamIndex from "../view/Admin/Team/TeamIndex";
 import TeamForm from "../view/Admin/Team/TeamForm";
 import ContactMessageIndex from "../view/Admin/ContactMessage/ContactMessageIndex";
+import ContactMessageShow from "../view/Admin/ContactMessage/ContactMessageShow";
 
 export const AdminRoutes = (
   <>
@@ -82,7 +83,7 @@ export const AdminRoutes = (
 
       <Route path="contact-message">
         <Route path="" element={<ContactMessageIndex />} />    
-        <Route path="show/:id" element={<CategoryForm />} />
+        <Route path="show/:id" element={<ContactMessageShow />} />
       </Route>
 
       <Route path="setting">

@@ -133,36 +133,36 @@ export default function TeamForm() {
               ))}
             </LabeledSelected>
 
-            <LabeledInput
+            {/* <LabeledInput
               className="w-full md:w-1/2 p-1"
               name="fb_link"
               register={register}
               errors={errors}
-            />
-            <LabeledInput
+            /> */}
+            {/* <LabeledInput
               className="w-full md:w-1/2 p-1"
               name="twitter_link"
               register={register}
               errors={errors}
-            />
-            <LabeledInput
+            /> */}
+            {/* <LabeledInput
               className="w-full md:w-1/2 p-1"
               name="instagram_link"
               register={register}
               errors={errors}
-            />
-            <LabeledInput
+            /> */}
+            {/* <LabeledInput
               className="w-full md:w-1/2 p-1"
               name="linkedin_link"
               register={register}
               errors={errors}
-            />
-            <LabeledInput
+            /> */}
+            {/* <LabeledInput
               className="w-full md:w-1/2 p-1"
               name="youtube_link"
               register={register}
               errors={errors}
-            />
+            /> */}
           </div>
 
           {/* Forgot + Button */}
