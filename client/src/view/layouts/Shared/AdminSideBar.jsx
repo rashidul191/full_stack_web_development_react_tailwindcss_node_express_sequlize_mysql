@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { MdDashboard, MdSettings } from "react-icons/md";
-import { Globe2, Home, MessageCircleMore, User2, Users } from "lucide-react";
+import { Globe2, Home, MessageCircleMore, PenIcon, User2, Users } from "lucide-react";
 
 const navClass = ({ isActive }) =>
   `flex items-center gap-2 hover:bg-gray-600 hover:text-white ${
@@ -33,6 +33,11 @@ const AdminSidebar = () => {
       ],
     },
     {
+      title: "Content Manage",
+      path: "/admin/content-manage",
+      icon: PenIcon,
+    },
+    {
       title: "Home",
       icon: Home,
       children: [
@@ -41,7 +46,7 @@ const AdminSidebar = () => {
           path: "/admin/slider",
         },
         {
-          title: "Service",
+          title: "Our Service",
           path: "/admin/service",
         },
         {

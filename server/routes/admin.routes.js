@@ -13,6 +13,7 @@ router.use("/register", require("./admin/auth/register.route"));
 //  Home Page Route
 
 router.use("/menu", require("./admin/menu.route"));
+
 router.use("/slider", require("./admin/slider.route"));
 router.use("/review", require("./admin/review.route"));
 router.use("/team", require("./admin/team.route"));
@@ -29,6 +30,10 @@ router.use("/faq", require("./admin/faq.route"));
 
 router.use("/service", require("./admin/service.route"));
 router.use("/activity", require("./admin/activity.route"));
+
+
+router.use("/content-manage", require("./admin/content-manage.route"));
+
 
 router.use("/business-setting", require("./admin/business.route"));
 

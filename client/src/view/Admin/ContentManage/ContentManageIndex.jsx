@@ -6,9 +6,17 @@ import { Link } from "react-router-dom";
 import { useApiHook } from "../../../hook/customHook";
 import Loading from "../../layouts/Shared/Loading";
 
-export default function BlogIndex() {
-  const { data: blogs, loading, deleteData } = useApiHook("/admin/blog");
+export default function ContentManageIndex() {
+  const {
+    data: contentManages,
+    loading,
+    deleteData,
+  } = useApiHook("/admin/content-manage");
   const columns = [
+    {
+      name: "Menu Name",
+      selector: (row) => row.menu?.name ?? "--",
+    },
     {
       name: "Image",
       width: "90px",
@@ -27,10 +35,7 @@ export default function BlogIndex() {
       selector: (row) =>
         row.slug.length > 20 ? row.slug.slice(0, 20) + "..." : row.slug,
     },
-    {
-      name: "Category",
-      selector: (row) => row.category?.name ?? "--",
-    },
+
     {
       name: "Action",
       width: "150px",
@@ -59,14 +64,14 @@ export default function BlogIndex() {
   return (
     <>
       <HeaderSection
-        title={"Blog List"}
-        createLink={"/admin/blog/create"}
+        title={"Content Manage"}
+        createLink={"/admin/content-manage/create"}
       ></HeaderSection>
 
       <div className="shadow">
         <TableData
           columns={columns}
-          data={blogs?.sort((a, b) => b.id - a.id) || []}
+          data={contentManages?.sort((a, b) => b.id - a.id) || []}
           searchKeys={["title", "slug"]}
         />
       </div>

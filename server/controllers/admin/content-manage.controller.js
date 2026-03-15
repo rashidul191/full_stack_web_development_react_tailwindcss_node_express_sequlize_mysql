@@ -1,7 +1,7 @@
-const { Menu, ContentManage } = require("../../models/index.js");
+const { ContentManage, Menu } = require("../../models/index.js");
 const { sendSuccess, sendError } = require("../../utility/response.handle.js");
 const ImageFile = require("../../lib/ImageFile.js");
-const imageHandler = new ImageFile("menus");
+const imageHandler = new ImageFile("content-manages");
 const {
   indexService,
   createService,
@@ -12,22 +12,12 @@ const {
 
 module.exports.index = async (req, res) => {
   try {
-    const result = await indexService(Menu, {
+    const result = await indexService(ContentManage, {
       include: [
         {
           model: Menu,
           attributes: ["id", "name", "slug"],
-          as: "parent",
-        },
-        {
-          model: Menu,
-          attributes: ["id", "name", "slug"],
-          as: "children",
-        },
-        {
-          model: ContentManage,
-          attributes: ["id", "title", "slug"],
-          as: "posts",
+          as: "menu",
         },
       ],
     });
@@ -42,8 +32,8 @@ module.exports.create = async (req, res, next) => {
   try {
     const data = req.body;
     data.image = req.file ? imageHandler.store(req.file) : null; // image manage
-    const result = await createService(Menu, data);
-    sendSuccess(res, "Successfully create Menu!", result);
+    const result = await createService(ContentManage, data);
+    sendSuccess(res, "Successfully create Content!", result);
   } catch (error) {
     next(error);
     console.log("create: ", error);
@@ -54,22 +44,12 @@ module.exports.create = async (req, res, next) => {
 module.exports.show = async (req, res) => {
   try {
     let id = req.params.id;
-    const result = await showService(Menu, id, {
+    const result = await showService(ContentManage, id, {
       include: [
         {
           model: Menu,
           attributes: ["id", "name", "slug"],
-          as: "parent",
-        },
-        {
-          model: Menu,
-          attributes: ["id", "name", "slug"],
-          as: "children",
-        },
-        {
-          model: ContentManage,
-          attributes: ["id", "title", "slug"],
-          as: "posts",
+          as: "menu",
         },
       ],
     });
@@ -83,22 +63,22 @@ module.exports.update = async (req, res) => {
   try {
     const id = req.params.id;
     const data = req.body;
-    const record = await Menu.findByPk(id);
+    const record = await ContentManage.findByPk(id);
     if (!record) throw new Error("Record not found");
     if (req.file) {
       data.image = imageHandler.store(req.file);
     } else {
       data.image = record.image;
     }
-    const result = await updateService(Menu, id, data);
+    const result = await updateService(ContentManage, id, data);
     sendSuccess(res, "Updated successfully!!", result);
   } catch (error) {
-    sendError(res, "Can't update Menu!!", error);
+    sendError(res, "Can't update Content Manage!!", error);
   }
 };
 
 module.exports.delete = async (req, res, next) => {
-  const result = await deleteService(Menu, req.params.id);
+  const result = await deleteService(ContentManage, req.params.id);
   try {
     sendSuccess(res, "Delete successfully!!", result);
   } catch (error) {

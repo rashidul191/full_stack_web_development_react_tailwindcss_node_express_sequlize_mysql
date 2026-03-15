@@ -35,6 +35,8 @@ import ActivityForm from "../view/Admin/Activity/ActivityForm";
 import StorieIndex from "../view/Admin/Storie/StorieIndex";
 import StorieForm from "../view/Admin/Storie/StorieForm";
 import AboutIndex from "../view/Admin/About/AboutIndex";
+import ContentManageIndex from "../view/Admin/ContentManage/ContentManageIndex";
+import ContentManageForm from "../view/Admin/ContentManage/ContentManageForm";
 
 export const AdminRoutes = (
   <>
@@ -63,6 +65,13 @@ export const AdminRoutes = (
         <Route path="create" element={<SubMenuForm />} />
         <Route path="edit/:id" element={<SubMenuForm />} />
       </Route>
+
+      <Route path="content-manage">
+        <Route path="" element={<ContentManageIndex />} />
+        <Route path="create" element={<ContentManageForm />} />
+        <Route path="edit/:id" element={<ContentManageForm />} />
+      </Route>
+
       <Route path="slider">
         <Route path="" element={<SliderIndex />} />
         <Route path="create" element={<SliderForm />} />
@@ -99,7 +108,7 @@ export const AdminRoutes = (
         <Route path="edit/:id" element={<CategoryForm />} />
       </Route>
 
-       <Route path="storie">
+      <Route path="storie">
         <Route path="" element={<StorieIndex />} />
         <Route path="create" element={<StorieForm />} />
         <Route path="edit/:id" element={<StorieForm />} />

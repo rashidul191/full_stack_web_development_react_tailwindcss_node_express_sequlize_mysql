@@ -13,11 +13,13 @@ export const FrontendRoutes = (
   <>
     <Route element={<FrontendLayout />}>
       <Route path="/" element={<Home />} />
+
+      <Route path="/:slug" element={<TopMenuContent />} />
+      <Route path="/:slug/:slug" element={<SubMenuContent />} />
+
       <Route path="/about-us" element={<AboutPage />} />
       <Route path="/blog" element={<BlogPage />} />
       <Route path="/blog/:slug" element={<BlogDetails />} />
-      <Route path="/:slug" element={<TopMenuContent />} />
-      <Route path="/:slug/:slug" element={<SubMenuContent />} />
 
       <Route path="/contact-us" element={<Contact />} />
     </Route>

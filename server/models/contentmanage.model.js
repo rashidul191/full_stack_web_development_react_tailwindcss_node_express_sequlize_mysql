@@ -18,11 +18,16 @@ module.exports = (sequelize, DataTypes) => {
   ContentManage.init(
     {
       menu_id: DataTypes.INTEGER,
-      title: DataTypes.STRING,
+      title: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       slug: {
         type: DataTypes.STRING,
+        allowNull: false,
         unique: true,
       },
+      image: DataTypes.STRING,
       short_description: DataTypes.TEXT,
       description: DataTypes.TEXT("long"),
       meta_title: DataTypes.STRING,

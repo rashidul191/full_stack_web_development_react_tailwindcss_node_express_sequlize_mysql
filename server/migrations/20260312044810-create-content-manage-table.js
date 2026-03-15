@@ -19,17 +19,22 @@ module.exports = {
         onUpdate: "CASCADE",
         onDelete: "SET NULL",
       },
+
       title: {
         type: Sequelize.STRING,
         allowNull: false,
       },
       slug: {
         type: Sequelize.STRING,
+        allowNull: false,
         unique: true,
+      },
+      image: {
+        type: Sequelize.STRING,
       },
 
       short_description: {
-        type: Sequelize.TEXT,
+        type: Sequelize.TEXT("logn"),
       },
       description: {
         type: Sequelize.TEXT("long"),

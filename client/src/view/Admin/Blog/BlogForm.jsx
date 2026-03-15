@@ -114,25 +114,20 @@ export default function BlogForm() {
                 />
               </div>
 
-              <div>
-                <label htmlFor="category_id">Select Category</label>
-                <select
-                  {...register("category_id")}
-                  className="select select-bordered w-full"
-                  defaultValue=""
-                  id="category_id"
-                >
-                  <option value="" disabled>
-                    Select Category
+              <LabeledSelected
+                label="Select Category"
+                name="category_id"
+                register={register}
+              >
+                <option value="" disabled>
+                  Select Category
+                </option>
+                {categories?.map((item) => (
+                  <option key={item.id} value={item.id}>
+                    {item.name}
                   </option>
-
-                  {categories?.map((item) => (
-                    <option key={item.id} value={item.id}>
-                      {item.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
+                ))}
+              </LabeledSelected>
 
               <LabeledTextarea
                 name="short_description"

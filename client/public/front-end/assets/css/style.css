@@ -13127,12 +13127,12 @@ hero-btn {
 }
 
 .section-padding3 {
-  padding-top: 195px;
+  padding-top: 100px;
   padding-bottom: 100px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .section-padding3 {
-    padding-top: 195px;
+    padding-top: 100px;
     padding-bottom: 100px;
   }
 }
@@ -14255,7 +14255,7 @@ hero-btn {
   display: block;
   padding-left: 60px;
 }
-.services-area .single-services .services-caption span::before {
+.services-area .single-services .services-caption span.case-category::before {
   position: absolute;
   content: "";
   width: 35px;

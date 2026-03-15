@@ -10,6 +10,9 @@ router.use("/login", require("./auth/login.route"));
 router.use("/register", require("./auth/register.route"));
 
 // web routes
+
+router.use("/menu", require("./web/menu.route"));
+
 router.use("/slider", require("./web/slider.route"));
 
 router.use("/blog", require("./web/blog.route"));
@@ -26,5 +29,7 @@ router.use("/service", require("./web/service.route"));
 router.use("/faq", require("./web/faq.route"));
 
 router.use("/activity", require("./web/activity.route"));
+
+router.use("/content-manage", require("./web/content-manage.route"));
 
 module.exports = router;

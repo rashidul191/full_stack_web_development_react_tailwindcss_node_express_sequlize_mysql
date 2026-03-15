@@ -82,19 +82,13 @@ const Footer = () => {
                       <h4>Explore</h4>
                       <ul>
                         <li>
-                          <a href="#">Cookies</a>
+                          <Link to="/blog">Blog</Link>
                         </li>
                         <li>
-                          <a href="#">About</a>
+                          <Link to="/about-us">About</Link>
                         </li>
                         <li>
-                          <a href="#">Privacy Policy</a>
-                        </li>
-                        <li>
-                          <a href="#">Proparties</a>
-                        </li>
-                        <li>
-                          <a href="#">Licenses</a>
+                          <Link to="/contact-us">Contact</Link>
                         </li>
                       </ul>
                     </div>
