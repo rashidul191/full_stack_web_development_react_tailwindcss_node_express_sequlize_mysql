@@ -12,6 +12,7 @@ import { useBusinessSettings } from "../../../utility/businessSetting";
 import { imageUrl } from "../../../utility/imageUrl";
 import { CheckCircle, PlayCircle } from "lucide-react";
 import ActivitySection from "./HomePageSection/ActivitySection";
+import StorieSection from "./HomePageSection/StorieSection";
 
 const Home = () => {
   const { data: blogs } = useApiHook("/blog");
@@ -251,122 +252,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="case-studies-area">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="section-tittle text-center mb-70">
-                  <span>Success Stories</span>
-                  <h2>Our Case Studies</h2>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-lg-4 col-md-6">
-                <div
-                  className="case-study-card"
-                  // data-aos="fade-up"
-                  // data-aos-delay="100"
-                >
-                  <div className="case-study-img">
-                    <img
-                      src="https://preview.colorlib.com/theme/consultingbiz/assets/img/gallery/services1.webp"
-                      alt="Digital transformation case study"
-                      width="555"
-                      height="394"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <span className="case-study-category">Finance</span>
-                  </div>
-                  <div className="case-study-content">
-                    <h4>
-                      <a href="#">Digital Transformation for Regional Bank</a>
-                    </h4>
-                    <p>
-                      Helped modernize legacy systems and improve customer
-                      experience through digital channels.
-                    </p>
-                    <div className="case-study-meta">
-                      <span className="client-name">
-                        <strong>Client:</strong> First Regional Bank
-                      </span>
-                      <span className="results">+45% efficiency</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6">
-                <div
-                  className="case-study-card"
-                  // data-aos="fade-up"
-                  // data-aos-delay="200"
-                >
-                  <div className="case-study-img">
-                    <img
-                      src="https://preview.colorlib.com/theme/consultingbiz/assets/img/gallery/services2.webp"
-                      alt="Healthcare operations case study"
-                      width="555"
-                      height="394"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <span className="case-study-category">Healthcare</span>
-                  </div>
-                  <div className="case-study-content">
-                    <h4>
-                      <a href="#">Operational Excellence in Healthcare</a>
-                    </h4>
-                    <p>
-                      Streamlined operations and reduced patient wait times
-                      through process optimization.
-                    </p>
-                    <div className="case-study-meta">
-                      <span className="client-name">
-                        <strong>Client:</strong> Metro Health System
-                      </span>
-                      <span className="results">-30% wait time</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6">
-                <div
-                  className="case-study-card"
-                  // data-aos="fade-up"
-                  // data-aos-delay="300"
-                >
-                  <div className="case-study-img">
-                    <img
-                      src="https://preview.colorlib.com/theme/consultingbiz/assets/img/gallery/services3.webp"
-                      alt="Supply chain optimization case study"
-                      width="555"
-                      height="394"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <span className="case-study-category">Manufacturing</span>
-                  </div>
-                  <div className="case-study-content">
-                    <h4>
-                      <a href="#">Supply Chain Optimization</a>
-                    </h4>
-                    <p>
-                      Redesigned supply chain strategy resulting in significant
-                      cost savings and faster delivery.
-                    </p>
-                    <div className="case-study-meta">
-                      <span className="client-name">
-                        <strong>Client:</strong> Industrial Corp
-                      </span>
-                      <span className="results">$2M saved</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <StorieSection></StorieSection>
 
         {/* <div className="cta-banner-area">
           <div className="container">

@@ -15,6 +15,8 @@ router.use("/slider", require("./web/slider.route"));
 router.use("/blog", require("./web/blog.route"));
 router.use("/category", require("./web/category.route"));
 
+router.use("/storie", require("./web/storie.route"));
+
 router.use("/team", require("./web/team.route"));
 
 router.use("/client-brand", require("./web/client-brand.route"));

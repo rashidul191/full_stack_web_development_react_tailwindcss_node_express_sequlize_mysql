@@ -11,27 +11,29 @@ export default function BlogIndex() {
   const columns = [
     {
       name: "Image",
-      width: "100px",
+      width: "90px",
       cell: (row) => (
-        <img className="w-10 h-10" src={imageUrl(row.image)} alt="" />
+        <img className="w-10 h-8" src={imageUrl(row.image)} alt="" />
       ),
     },
     {
       name: "Title",
-      selector: (row) => row.title,
+      selector: (row) =>
+        row.title.length > 20 ? row.title.slice(0, 20) + "..." : row.title,
       sortable: true,
     },
     {
       name: "Slug",
-      selector: (row) => row.slug,
+      selector: (row) =>
+        row.slug.length > 20 ? row.slug.slice(0, 20) + "..." : row.slug,
     },
     {
       name: "Category",
-      selector: (row) => row.category?.name ?? '--',
+      selector: (row) => row.category?.name ?? "--",
     },
     {
       name: "Action",
-      width: "180px",
+      width: "150px",
       center: true,
       cell: (row) => (
         <div className="flex gap-2">
@@ -65,7 +67,7 @@ export default function BlogIndex() {
         <TableData
           columns={columns}
           data={blogs || []}
-          searchKeys={["name", "slug"]}
+          searchKeys={["title", "slug"]}
         />
       </div>
     </>

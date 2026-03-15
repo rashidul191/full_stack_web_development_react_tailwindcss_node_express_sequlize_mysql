@@ -53,6 +53,10 @@ const AdminSidebar = () => {
           path: "/admin/review",
         },
         {
+          title: "Storie",
+          path: "/admin/storie",
+        },
+        {
           title: "Actvity",
           path: "/admin/activity",
         },

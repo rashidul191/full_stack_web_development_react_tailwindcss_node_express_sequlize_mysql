@@ -32,7 +32,7 @@ export default function ContactMessageIndex() {
 
     {
       name: "Action",
-      width: "180px",
+      width: "150px",
       center: true,
       cell: (row) => (
         <div className="flex gap-2">

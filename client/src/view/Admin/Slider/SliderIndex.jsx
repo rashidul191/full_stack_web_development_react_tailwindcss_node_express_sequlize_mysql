@@ -11,9 +11,9 @@ export default function SliderIndex() {
   const columns = [
     {
       name: "Image",
-      width: "100px",
+      width: "90px",
       cell: (row) => (
-        <img className="w-10 h-10" src={imageUrl(row.image)} alt="" />
+        <img className="w-10 h-8" src={imageUrl(row.image)} alt="" />
       ),
     },
     {
@@ -35,7 +35,7 @@ export default function SliderIndex() {
     },
     {
       name: "Action",
-      width: "180px",
+      width: "150px",
       center: true,
       cell: (row) => (
         <div className="flex gap-2">

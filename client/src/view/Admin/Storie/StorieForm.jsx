@@ -12,7 +12,7 @@ import { imageUrl } from "../../../utility/imageUrl";
 import RichTextEditor from "../../Components/RichTextEditor";
 import slugify from "slugify";
 
-export default function BlogForm() {
+export default function StorieForm() {
   const { previewImage, handleImageChange } = useImagePreview();
 
   const navigator = useNavigate();
@@ -20,11 +20,12 @@ export default function BlogForm() {
   const { id } = useParams();
 
   // CRUD
-  const { data: categories } = useApiHook("/admin/category");
-  const { createData, updateData } = useApiHook("/admin/blog"); // custom hook
+  const { createData, updateData } = useApiHook("/admin/storie"); // custom hook
 
   // Single data (edit)
-  const { data: blog, loading } = useApiHook(id ? `/admin/blog/${id}` : null); // custom hook
+  const { data: storie, loading } = useApiHook(
+    id ? `/admin/storie/${id}` : null,
+  ); // custom hook
 
   const {
     control,
@@ -38,10 +39,10 @@ export default function BlogForm() {
   // Load single data in form
   // ==========================
   useEffect(() => {
-    if (blog) {
-      reset(blog);
+    if (storie) {
+      reset(storie);
     }
-  }, [blog, reset]);
+  }, [storie, reset]);
 
   // ==========================
   // Submit
@@ -61,7 +62,7 @@ export default function BlogForm() {
     }
 
     if (res) {
-      navigator("/admin/blog");
+      navigator("/admin/storie");
     }
   };
 
@@ -74,8 +75,8 @@ export default function BlogForm() {
   return (
     <>
       <HeaderSection
-        title={`Blog ${id ? "Edit" : "Create"}`}
-        backLink={"/admin/blog"}
+        title={`Storie ${id ? "Edit" : "Create"}`}
+        backLink={"/admin/storie"}
       ></HeaderSection>
 
       <div className="shadow-lg p-4 rounded mt-5">
@@ -100,7 +101,7 @@ export default function BlogForm() {
               <div>
                 <img
                   className="w-14 h-14 mb-2 object-cover rounded"
-                  src={previewImage?.image || imageUrl(blog?.image)}
+                  src={previewImage?.image || imageUrl(storie?.image)}
                   alt=""
                 />
 
@@ -112,26 +113,6 @@ export default function BlogForm() {
                   register={register}
                   errors={errors}
                 />
-              </div>
-
-              <div>
-                <label htmlFor="category_id">Select Category</label>
-                <select
-                  {...register("category_id")}
-                  className="select select-bordered w-full"
-                  defaultValue=""
-                  id="category_id"
-                >
-                  <option value="" disabled>
-                    Select Category
-                  </option>
-
-                  {categories?.map((item) => (
-                    <option key={item.id} value={item.id}>
-                      {item.name}
-                    </option>
-                  ))}
-                </select>
               </div>
 
               <LabeledTextarea

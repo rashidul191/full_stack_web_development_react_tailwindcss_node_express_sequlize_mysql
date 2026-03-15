@@ -32,6 +32,8 @@ import ServiceForm from "../view/Admin/Service/ServiceForm";
 import VideoSectionForHomePage from "../view/Admin/Setting/VideoSectionForHomePage";
 import ActivityIndex from "../view/Admin/Activity/ActivityIndex";
 import ActivityForm from "../view/Admin/Activity/ActivityForm";
+import StorieIndex from "../view/Admin/Storie/StorieIndex";
+import StorieForm from "../view/Admin/Storie/StorieForm";
 
 export const AdminRoutes = (
   <>
@@ -94,6 +96,12 @@ export const AdminRoutes = (
         <Route path="" element={<CategoryIndex />} />
         <Route path="create" element={<CategoryForm />} />
         <Route path="edit/:id" element={<CategoryForm />} />
+      </Route>
+
+       <Route path="storie">
+        <Route path="" element={<StorieIndex />} />
+        <Route path="create" element={<StorieForm />} />
+        <Route path="edit/:id" element={<StorieForm />} />
       </Route>
 
       <Route path="client-brand">
