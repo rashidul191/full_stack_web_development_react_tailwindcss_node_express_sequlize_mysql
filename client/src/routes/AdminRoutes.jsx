@@ -27,6 +27,8 @@ import ClientBrandIndex from "../view/Admin/ClientBrand/ClientBrandIndex";
 import ClientBrandForm from "../view/Admin/ClientBrand/ClientBrandForm";
 import FAQIndex from "../view/Admin/FAQ/FAQIndex";
 import FAQForm from "../view/Admin/FAQ/FAQForm";
+import ServiceIndex from "../view/Admin/Service/ServiceIndex";
+import ServiceForm from "../view/Admin/Service/ServiceForm";
 
 export const AdminRoutes = (
   <>
@@ -89,6 +91,12 @@ export const AdminRoutes = (
         <Route path="" element={<ClientBrandIndex />} />
         <Route path="create" element={<ClientBrandForm />} />
         <Route path="edit/:id" element={<ClientBrandForm />} />
+      </Route>
+
+      <Route path="service">
+        <Route path="" element={<ServiceIndex />} />
+        <Route path="create" element={<ServiceForm />} />
+        <Route path="edit/:id" element={<ServiceForm />} />
       </Route>
 
       <Route path="faq">

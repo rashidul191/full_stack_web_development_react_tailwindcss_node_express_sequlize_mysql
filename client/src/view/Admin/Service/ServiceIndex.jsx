@@ -5,14 +5,14 @@ import { Eye, PenBoxIcon, Trash2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useApiHook } from "../../../hook/customHook";
 import Loading from "../../layouts/Shared/Loading";
-import { getCommonStatusName } from "../../../enum/commonStatus";
 
-export default function TeamIndex() {
-  const { data: teams, loading, deleteData } = useApiHook("/admin/team");
+export default function ServiceIndex() {
+  const { data: services, loading, deleteData } = useApiHook("/admin/service");
+
   const columns = [
     {
       name: "Image",
-      width: "100px",
+       width: "100px",
       cell: (row) => (
         <img className="w-10 h-10" src={imageUrl(row.image)} alt="" />
       ),
@@ -23,18 +23,12 @@ export default function TeamIndex() {
       sortable: true,
     },
     {
-      name: "Designation",
-      selector: (row) => row.designation ?? "--",
+      name: "Content",
+      selector: (row) =>
+        row.content?.length > 50
+          ? row.content.slice(0, 50) + "..."
+          : row.content,
     },
-    {
-      name: "Serial",
-      selector: (row) => row.serial ?? "--",
-    },
-    {
-      name: "Status",
-      selector: (row) => getCommonStatusName[row.status],
-    },
-
     {
       name: "Action",
       width: "180px",
@@ -63,15 +57,15 @@ export default function TeamIndex() {
   return (
     <>
       <HeaderSection
-        title={"Review List"}
-        createLink={"/admin/team/create"}
+        title={"Service List"}
+        createLink={"/admin/service/create"}
       ></HeaderSection>
 
       <div className="shadow">
         <TableData
           columns={columns}
-          data={teams?.sort((a, b) => a.serial - b.serial) || []}
-          searchKeys={["name", "slug", "serial"]}
+          data={services?.sort((a, b) => b.id - a.id) || []}
+          searchKeys={["name", "link"]}
         />
       </div>
     </>

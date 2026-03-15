@@ -15,7 +15,7 @@ export default function MenuIndex() {
   const columns = [
     {
       name: "Page Banner Image",
-
+      width: "100px",
       cell: (row) => (
         <img className="w-10 h-10" src={imageUrl(row.banner_image)} alt="" />
       ),
@@ -39,6 +39,7 @@ export default function MenuIndex() {
     },
     {
       name: "Action",
+      width: "180px",
       center: true,
       cell: (row) => (
         <div className="flex gap-2">

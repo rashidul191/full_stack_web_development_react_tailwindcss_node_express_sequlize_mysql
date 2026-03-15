@@ -9,15 +9,14 @@ import { getCommonStatusName } from "../../../enum/commonStatus";
 
 export default function SubMenuIndex() {
   const { data: menus, loading, deleteData } = useApiHook("/admin/menu");
-  const subMenus = menus
-    ?.sort()
-    ?.filter((item) => item.parent_id !== null);
+  const subMenus = menus?.sort()?.filter((item) => item.parent_id !== null);
 
   console.log(subMenus);
 
   const columns = [
     {
       name: "Page Banner Image",
+      width: "100px",
       cell: (row) => (
         <img className="w-10 h-10" src={imageUrl(row.banner_image)} alt="" />
       ),
@@ -45,6 +44,7 @@ export default function SubMenuIndex() {
     },
     {
       name: "Action",
+      width: "180px",
       center: true,
       cell: (row) => (
         <div className="flex gap-2">

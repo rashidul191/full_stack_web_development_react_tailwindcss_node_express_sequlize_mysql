@@ -11,6 +11,7 @@ export default function BlogIndex() {
   const columns = [
     {
       name: "Image",
+      width: "100px",
       cell: (row) => (
         <img className="w-10 h-10" src={imageUrl(row.image)} alt="" />
       ),
@@ -30,6 +31,7 @@ export default function BlogIndex() {
     },
     {
       name: "Action",
+      width: "180px",
       center: true,
       cell: (row) => (
         <div className="flex gap-2">

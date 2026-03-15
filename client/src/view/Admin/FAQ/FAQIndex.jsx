@@ -21,6 +21,7 @@ export default function FAQIndex() {
     },
     {
       name: "Action",
+      width: "180px",
       center: true,
       cell: (row) => (
         <div className="flex gap-2">
