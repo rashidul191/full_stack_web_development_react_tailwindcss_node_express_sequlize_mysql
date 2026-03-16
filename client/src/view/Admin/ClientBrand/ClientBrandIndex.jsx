@@ -23,12 +23,12 @@ export default function ClientBrandIndex() {
     },
     {
       name: "Name",
-      selector: (row) => row.name,
+      selector: (row) => row.name || "--",
       sortable: true,
     },
     {
       name: "Link",
-      selector: (row) => row.slug,
+      selector: (row) => row.slug || "--",
     },
     {
       name: "Action",

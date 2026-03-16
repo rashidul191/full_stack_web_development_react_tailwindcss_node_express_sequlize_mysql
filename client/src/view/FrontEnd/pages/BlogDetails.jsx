@@ -25,9 +25,10 @@ const BlogDetails = () => {
               <div className="single-post">
                 <div className="feature-img">
                   <img
-                    className="img-fluid"
+                    className="img-fluid w-100"
                     src={imageUrl(blog?.image)}
                     alt={blog?.title}
+                    style={{ height: "350px", objectFit: "cover" }}
                   />
                 </div>
 

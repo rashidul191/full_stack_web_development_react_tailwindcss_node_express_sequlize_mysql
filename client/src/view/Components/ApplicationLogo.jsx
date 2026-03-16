@@ -20,7 +20,7 @@ const ApplicationLogo = (props) => {
     <>
       <div className="w-full flex justify-center items-center">
         <img
-          className={`w-auto p-4 ${className}`}
+          className={`w-auto p-2 ${className}`}
           src={imageUrl(businessSetting.logo) || logo}
           alt="Logo"
         />

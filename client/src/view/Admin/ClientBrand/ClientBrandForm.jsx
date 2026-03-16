@@ -82,6 +82,7 @@ export default function ClientBrandForm() {
               />
 
               <LabeledInput
+                label="Image (170x170px)"
                 type="file"
                 name="image"
                 onChange={handleImageChange}

@@ -10,6 +10,7 @@ import Loading from "../../layouts/Shared/Loading";
 import { useNavigate, useParams } from "react-router-dom";
 import { imageUrl } from "../../../utility/imageUrl";
 import RichTextEditor from "../../Components/RichTextEditor";
+import LabeledSelected from "../../Components/LabeledSelected";
 
 export default function BlogForm() {
   const { previewImage, handleImageChange } = useImagePreview();
@@ -112,7 +113,7 @@ export default function BlogForm() {
                 name="category_id"
                 register={register}
               >
-                <option value="" disabled>
+                <option value="" disabled selected>
                   Select Category
                 </option>
                 {categories?.map((item) => (

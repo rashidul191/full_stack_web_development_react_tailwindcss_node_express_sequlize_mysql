@@ -115,7 +115,12 @@ export default function PriceSection() {
                   </span>
 
                   <span className="period">
-                    /{getPriceStatusName[item?.status].toLowerCase()}
+                    /{" "}
+                    {item?.status === PriceStatus.Monthly
+                      ? getPriceStatusName[item?.status].toLowerCase()
+                      : "month (billed " +
+                        getPriceStatusName[item?.status].toLowerCase() +
+                        ")"}
                   </span>
                 </div>
 

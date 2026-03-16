@@ -41,15 +41,7 @@ module.exports.show = async (req, res, next) => {
   try {
     const id = req.params.id;
 
-    const result = await showService(ClientBrand, id, {
-      include: [
-        {
-          model: Category,
-          attributes: ["id", "name"],
-          as: "category",
-        },
-      ],
-    });
+    const result = await showService(ClientBrand, id);
 
     sendSuccess(res, "Successfully found single data!!", result);
   } catch (error) {

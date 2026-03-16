@@ -13152,7 +13152,7 @@ a:hover {
 }
 
 .footer-padding {
-  padding-top: 143px;
+  padding-top: 80px;
   padding-bottom: 80px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -14566,7 +14566,7 @@ a:hover {
   border-bottom: 1px solid #233148;
 }
 .footer-area .footer-top .single-footer-caption .footer-logo {
-  margin-bottom: 30px;
+  margin-bottom: 0;
 }
 .footer-area .footer-top .single-footer-caption .footer-pera .info1 {
   line-height: 1.8;
@@ -14717,7 +14717,7 @@ a:hover {
   font-weight: 300;
   font-size: 16px;
   line-height: 2;
-  margin-bottom: 12px;
+  margin-bottom: 0;
 }
 .footer-area .footer-bottom .footer-copy-right p i {
   color: #ff0000;

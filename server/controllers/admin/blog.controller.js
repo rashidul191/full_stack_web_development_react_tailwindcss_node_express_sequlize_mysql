@@ -11,6 +11,7 @@ const {
   updateService,
   deleteService,
 } = require("../../utility/curd.service.js");
+const generateUniqueSlug = require("../../utility/generateSlug.js");
 
 module.exports.index = async (req, res, next) => {
   try {

@@ -110,7 +110,7 @@ export default function PriceForm() {
                 label="Image (100x100px)"
                 type="file"
                 name="image"
-                onChange={handleImageChange}            
+                onChange={handleImageChange}
                 register={register}
                 errors={errors}
               />
@@ -171,8 +171,6 @@ export default function PriceForm() {
               className="w-full md:w-1/2 p-1"
               required
             >
-              <option value="">Select Popular</option>
-
               {Object.entries(YesNoStatus).map(([key, value]) => (
                 <option key={value} value={value}>
                   {key}

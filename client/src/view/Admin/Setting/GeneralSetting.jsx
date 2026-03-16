@@ -60,6 +60,7 @@ export default function GeneralSetting() {
               />
 
               <LabeledInput
+                label="Meta Icon (64x64px)"
                 type="file"
                 name="meta_icon"
                 onChange={handleImageChange}
@@ -77,6 +78,7 @@ export default function GeneralSetting() {
               />
 
               <LabeledInput
+                label="Logo (150x40px)"
                 type="file"
                 name="logo"
                 onChange={handleImageChange}

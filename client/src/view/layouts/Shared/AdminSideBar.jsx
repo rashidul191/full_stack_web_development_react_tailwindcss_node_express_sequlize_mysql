@@ -70,24 +70,18 @@ const AdminSidebar = () => {
           title: "Actvity",
           path: "/admin/activity",
         },
-
-        {
-          title: "Client Brand",
-          path: "/admin/client-brand",
-        },
-
         {
           title: "FAQ List",
           path: "/admin/faq",
         },
+
+        {
+          title: "Client Logo",
+          path: "/admin/client-brand",
+        },
       ],
     },
 
-    {
-      title: "Price",
-      path: "/admin/price",
-      icon: BadgeDollarSign,
-    },
     {
       title: "About Page",
       path: "/admin/about-us",
@@ -95,9 +89,21 @@ const AdminSidebar = () => {
     },
 
     {
+      title: "Storie",
+      path: "/admin/storie",
+      icon: Globe2,
+    },
+
+    {
       title: "Team",
       path: "/admin/team",
       icon: Users,
+    },
+
+    {
+      title: "Price",
+      path: "/admin/price",
+      icon: BadgeDollarSign,
     },
     {
       title: "Blog",
@@ -114,11 +120,6 @@ const AdminSidebar = () => {
       ],
     },
 
-    {
-      title: "Storie",
-      path: "/admin/storie",
-      icon: Globe2,
-    },
     {
       title: "Contact Message",
       path: "/admin/contact-message",
