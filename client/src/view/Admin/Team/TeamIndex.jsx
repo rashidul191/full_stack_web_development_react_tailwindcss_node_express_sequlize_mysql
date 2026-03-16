@@ -24,11 +24,11 @@ export default function TeamIndex() {
     },
     {
       name: "Designation",
-      selector: (row) => row.designation ?? "--",
+      selector: (row) => row.designation || "--",
     },
     {
       name: "Serial",
-      selector: (row) => row.serial ?? "--",
+      selector: (row) => row.serial || "--",
     },
     {
       name: "Status",

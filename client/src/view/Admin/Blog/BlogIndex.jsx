@@ -29,7 +29,7 @@ export default function BlogIndex() {
     },
     {
       name: "Category",
-      selector: (row) => row.category?.name ?? "--",
+      selector: (row) => row.category?.name || "--",
     },
     {
       name: "Action",

@@ -23,7 +23,7 @@ export default function ReviewIndex() {
     },
     {
       name: "Designation",
-      selector: (row) => row.designation ?? "--",
+      selector: (row) => row.designation || "--",
     },
 
     {

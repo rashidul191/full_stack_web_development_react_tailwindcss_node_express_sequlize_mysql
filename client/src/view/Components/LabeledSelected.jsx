@@ -17,7 +17,7 @@ const LabeledSelected = (props) => {
     .replace(/\b\w/g, (char) => char.toUpperCase())
     .trim();
 
-  const finalLabel = label ?? nameText;
+  const finalLabel = label || nameText;
 
   return (
     <div className={`mb-2 ${className}`}>

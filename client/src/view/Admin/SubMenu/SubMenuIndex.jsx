@@ -32,7 +32,7 @@ export default function SubMenuIndex() {
     },
     {
       name: "Top Menu",
-      selector: (row) => row.parent?.name ?? "--",
+      selector: (row) => row.parent?.name || "--",
     },
     {
       name: "Serial",

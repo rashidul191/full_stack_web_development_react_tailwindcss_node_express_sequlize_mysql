@@ -50,7 +50,7 @@ const Home = () => {
                       <div className="video-overlay">
                         <a
                           // target="_blank"
-                          href={businessSetting?.video_youtube_link ?? "#"}
+                          href={businessSetting?.video_youtube_link || "#"}
                           className="play-btn glightbox"
                         >
                           <PlayCircle></PlayCircle>

@@ -234,7 +234,7 @@ const BlogDetails = () => {
                         <li>
                           <a href="javascript:void(0)" className="d-flex">
                             <p>{item?.name}</p>
-                            <p>({item?.blogs?.length ?? 0})</p>
+                            <p>({item?.blogs?.length || 0})</p>
                           </a>
                         </li>
                       );

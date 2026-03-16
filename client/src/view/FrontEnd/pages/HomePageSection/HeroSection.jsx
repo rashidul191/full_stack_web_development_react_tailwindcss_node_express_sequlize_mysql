@@ -38,10 +38,10 @@ export default function HeroSection() {
 
                         <div className="hero__btn">
                           <Link
-                            to={item.button_link ?? "/"}
+                            to={item.button_link || "/"}
                             className="btn hero-btn"
                           >
-                            {item.button_text ?? "Contact"}
+                            {item.button_text || "Contact"}
                           </Link>
                         </div>
                       </div>

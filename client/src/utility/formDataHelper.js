@@ -1,34 +1,52 @@
+// ================= HELPER =================
+const isEmpty = (value) => {
+  return value === "" || value === undefined || value === null;
+};
+
+// ================= FORM DATA WITH FILE =================
 export const createFormDataWithFile = (data) => {
   const formData = new FormData();
 
   Object.entries(data).forEach(([key, value]) => {
+    // skip empty values
+    if (isEmpty(value)) return;
+
+    // FileList
     if (value instanceof FileList) {
       if (value.length > 0) {
         formData.append(key, value[0]);
       }
-    } else if (value instanceof File) {
-      formData.append(key, value);
-    } else if (Array.isArray(value)) {
-      value.forEach((item) => formData.append(`${key}[]`, item));
-    } else {
-      // empty string avoid
-      formData.append(key, value ?? "");
-      // if (value !== "" && value !== undefined && value !== null) {
-      //   formData.append(key, value);
-      // }
+      return;
     }
+
+    // File
+    if (value instanceof File) {
+      formData.append(key, value);
+      return;
+    }
+
+    // Array
+    if (Array.isArray(value)) {
+      value.forEach((item) => {
+        if (!isEmpty(item)) {
+          formData.append(`${key}[]`, item);
+        }
+      });
+      return;
+    }
+
+    // Normal value
+    formData.append(key, value);
   });
 
   return formData;
 };
 
-// empty string → null convert
+// ================= NORMAL FORM DATA =================
 export const createFormData = (data) => {
-  const onlyData = Object.fromEntries(
-    Object.entries(data).map(([key, value]) => [
-      key,
-      value === "" ? null : value,
-    ]),
+  const cleanedData = Object.fromEntries(
+    Object.entries(data).filter(([_, value]) => !isEmpty(value)),
   );
-  return onlyData;
+
+  return cleanedData;
 };

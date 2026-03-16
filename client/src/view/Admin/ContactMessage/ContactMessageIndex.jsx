@@ -19,15 +19,15 @@ export default function ContactMessageIndex() {
     },
     {
       name: "Phone",
-      selector: (row) => row.phone ?? "--",
+      selector: (row) => row.phone || "--",
     },
     {
       name: "Email",
-      selector: (row) => row.email ?? "--",
+      selector: (row) => row.email || "--",
     },
     {
       name: "Subject",
-      selector: (row) => row.subject ?? "--",
+      selector: (row) => row.subject || "--",
     },
 
     {

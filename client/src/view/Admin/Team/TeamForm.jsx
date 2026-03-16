@@ -44,6 +44,7 @@ export default function TeamForm() {
   // Submit
   // ==========================
   const onSubmit = async (data) => {
+    console.log(data);
     let res;
     if (id) {
       res = await updateData(id, data, true); // true for image

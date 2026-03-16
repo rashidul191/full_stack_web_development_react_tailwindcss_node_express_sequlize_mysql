@@ -29,7 +29,7 @@ const toast = {
   //   swalWithBootstrapButtons
   //     .fire({
   //       title: "Are you sure?",
-  //       text: `You want be able to delete ${message ?? "this"} !`,
+  //       text: `You want be able to delete ${message || "this"} !`,
   //       icon: "warning",
   //       showCancelButton: true,
   //       confirmButtonText: "Yes, delete it!",
@@ -61,7 +61,7 @@ const toast = {
   delete: async (message = null) => {
     const result = await Swal.fire({
       title: "Are you sure?",
-      text: `You want be able to delete ${message ?? "this"}!`,
+      text: `You want be able to delete ${message || "this"}!`,
       icon: "warning",
       showCancelButton: true,
       confirmButtonText: "Yes, delete it!",

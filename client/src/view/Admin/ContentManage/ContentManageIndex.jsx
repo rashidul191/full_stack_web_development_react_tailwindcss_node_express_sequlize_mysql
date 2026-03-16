@@ -15,7 +15,7 @@ export default function ContentManageIndex() {
   const columns = [
     {
       name: "Menu Name",
-      selector: (row) => row.menu?.name ?? "--",
+      selector: (row) => row.menu?.name || "--",
     },
     {
       name: "Image",

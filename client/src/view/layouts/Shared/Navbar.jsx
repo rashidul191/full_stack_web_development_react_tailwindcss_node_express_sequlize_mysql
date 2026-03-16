@@ -35,7 +35,7 @@ export default function Navbar({ userInfo, toggleDrawer }) {
         </label>
         {/* Right side */}
         <div className="flex w-full justify-end items-center">
-          <NavLink to={"/"} >
+          <NavLink to={"/"}>
             <Globe2></Globe2>
           </NavLink>
 
@@ -48,7 +48,7 @@ export default function Navbar({ userInfo, toggleDrawer }) {
             >
               <div className="avatar">
                 <div className="w-10 rounded-full">
-                  <img src={user?.avatar ?? defaultAvatar} alt="profile" />
+                  <img src={user?.avatar || defaultAvatar} alt="profile" />
                 </div>
               </div>
 
