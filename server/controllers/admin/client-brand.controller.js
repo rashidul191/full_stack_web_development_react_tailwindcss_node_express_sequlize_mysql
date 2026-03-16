@@ -32,7 +32,6 @@ module.exports.create = async (req, res, next) => {
 
     sendSuccess(res, "Successfully create ClientBrand!", result);
   } catch (error) {
-    console.log("create: ", error);
     next(error);
   }
 };

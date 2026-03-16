@@ -20,8 +20,6 @@ module.exports.index = async (req, res, next) => {
 module.exports.show = async (req, res, next) => {
   try {
     const id = req.params.id;
-    console.log(id);
-
     const result = await showService(ContactMessage, id);
 
     sendSuccess(res, "Successfully found single data!!", result);

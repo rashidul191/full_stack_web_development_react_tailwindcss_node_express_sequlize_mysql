@@ -55,7 +55,6 @@ module.exports.create = async (req, res, next) => {
 
     sendSuccess(res, "Successfully create Menu!", result);
   } catch (error) {
-    console.log("create: ", error);
     next(error);
   }
 };

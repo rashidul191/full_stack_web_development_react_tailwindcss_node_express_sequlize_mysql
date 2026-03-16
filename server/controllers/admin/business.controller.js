@@ -23,9 +23,7 @@ module.exports.update = async (req, res, next) => {
         const key = file.fieldname;
         const setting = await BusinessSetting.findOne({ where: { key } });
         const oldPath = setting ? setting.value : null;
-        console.log("oldpath: ", oldPath);
         data[key] = imageHandler.update(oldPath, file);
-        console.log("datakey: ", data[key]);
       }
     }
 

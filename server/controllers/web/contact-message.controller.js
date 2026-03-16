@@ -14,7 +14,6 @@ module.exports.create = async (req, res, next) => {
 
     sendSuccess(res, "Successfully send message!", result);
   } catch (error) {
-    console.log("create: ", error);
     next(error);
   }
 };

@@ -38,7 +38,6 @@ module.exports.create = async (req, res, next) => {
 
     sendSuccess(res, "Successfully create Team!", result);
   } catch (error) {
-    console.log("create:", error);
     next(error);
   }
 };
