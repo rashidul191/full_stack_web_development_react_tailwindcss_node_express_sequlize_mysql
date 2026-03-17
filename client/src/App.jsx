@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import NotFound from "./view/FrontEnd/Pages/NotFound";
 import { FrontendRoutes } from "./routes/FrontendRoutes";
 import { UserRoutes } from "./routes/UserRoutes";
-import { AdminRoutes } from "./routes/adminRoutes";
+import { AdminRoutes } from "./routes/AdminRoutes";
 import { AuthRoutes } from "./routes/AuthRoutes";
 
 function App() {
